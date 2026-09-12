@@ -1,9 +1,14 @@
-body {
-    font-family: 'Inter', sans-serif;
-}
-
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
 }
 
 /* =====================================================
@@ -212,19 +217,37 @@ html {
     transform: translateY(0) scale(1);
 }
 
-/* Directional reveal variants */
+/* Directional reveal variants — use vertical-only on small screens to avoid
+   off-canvas X translation causing a horizontal scrollbar */
 .reveal-left {
-    transform: translateX(-40px) scale(0.98);
+    transform: translateY(40px) scale(0.98);
 }
 .reveal-left.show {
-    transform: translateX(0) scale(1);
+    transform: translateY(0) scale(1);
 }
 
 .reveal-right {
-    transform: translateX(40px) scale(0.98);
+    transform: translateY(40px) scale(0.98);
 }
 .reveal-right.show {
-    transform: translateX(0) scale(1);
+    transform: translateY(0) scale(1);
+}
+
+/* Restore lateral direction only on larger screens where overflow is clipped */
+@media (min-width: 768px) {
+    .reveal-left {
+        transform: translateX(-40px) scale(0.98);
+    }
+    .reveal-left.show {
+        transform: translateX(0) scale(1);
+    }
+
+    .reveal-right {
+        transform: translateX(40px) scale(0.98);
+    }
+    .reveal-right.show {
+        transform: translateX(0) scale(1);
+    }
 }
 
 .reveal-scale {
@@ -305,11 +328,12 @@ html {
 * {
     scrollbar-color: #aaff00 #050a0b;
     scrollbar-width: thin;
+    box-sizing: border-box;
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 6px;
+    height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -324,4 +348,28 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
     background-color: #88cc00;
+}
+
+/* =====================================================
+   MOBILE-FIRST RESPONSIVE HELPERS
+===================================================== */
+
+/* Ensure images / media never overflow */
+img, video, svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Clamp hero headline tracking on very small screens */
+@media (max-width: 480px) {
+    h1 {
+        letter-spacing: -1px !important;
+    }
+}
+
+/* Progress Check section grid pattern must not overflow */
+@media (max-width: 768px) {
+    .bg-\[length\:70px_70px\] {
+        background-size: 40px 40px !important;
+    }
 }
