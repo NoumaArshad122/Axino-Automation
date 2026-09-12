@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nouman Arshad | Creative Developer & UI Engineer</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Google Fonts: Syne & Plus Jakarta Sans -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+
+<script>
+tailwind.config={
+  theme:{
+    extend:{
+      colors:{
+        ink:"#000000",
+        beige:"#D8C4A6",
+        cream:"#F3E8D3",
+        muted:"#9C927F",
+        cardbg:"#080808"
+      },
+      fontFamily:{
+        syne:['Syne', 'sans-serif'],
+        sans:['Plus Jakarta Sans', 'sans-serif']
+      },
+      keyframes:{
+        reveal:{"0%":{opacity:0,transform:"translateY(55px) scale(.96)"},"100%":{opacity:1,transform:"translateY(0) scale(1)"}},
+        float:{"0%,100%":{transform:"translateY(0) rotateX(0) rotateY(0)"},"50%":{transform:"translateY(-18px) rotateX(5deg) rotateY(8deg)"}},
+        marquee:{"0%":{transform:"translateX(0)"},"100%":{transform:"translateX(-50%)"}}
+      },
+      animation:{
+        float:"float 6s ease-in-out infinite",
+        marquee:"marquee 22s linear infinite"
+      }
+    }
+  }
+}
+</script>
+<style>
+*{box-sizing:border-box}
+html, body{background-color:#000000; color:#F3E8D3; font-family:'Plus Jakarta Sans', sans-serif;}
+h1, h2, h3, .font-syne{font-family:'Syne', sans-serif;}
+
+/* Custom Beige Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #000000; }
+::-webkit-scrollbar-thumb { background: #332E27; border-radius: 5px; border: 2px solid #000000; }
+::-webkit-scrollbar-thumb:hover { background: #D8C4A6; }
+
+::selection{background:#D8C4A6;color:#000000}
+
+/* Custom Cursor */
+body{cursor:none}
+.cursor-dot,.cursor-ring{position:fixed;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%)}
+.cursor-dot{width:7px;height:7px;background:#F3E8D3}
+.cursor-ring{width:38px;height:38px;border:1px solid #D8C4A6;transition:.2s ease-out}
+.cursor-ring.active{width:58px;height:58px;background:#D8C4A618;border-color:#F3E8D3}
+
+/* UI Elements */
+.nav-glass{background:#000000c2;backdrop-filter:blur(20px)}
+.grid-bg{background-image:linear-gradient(#D8C4A60a 1px,transparent 1px),linear-gradient(90deg,#D8C4A60a 1px,transparent 1px);background-size:55px 55px}
+.reveal{opacity:0;transform:translateY(40px) scale(.98);transition:.8s cubic-bezier(.16,1,.3,1)}.reveal.show{opacity:1;transform:none}
+
+/* Left-to-Right Hover Animation for Buttons */
+.btn-lr{position:relative;overflow:hidden;isolation:isolate;transition:color .4s cubic-bezier(.16,1,.3,1)}
+.btn-lr:before{content:"";position:absolute;inset:0;background:#D8C4A6;transform:translateX(-101%);transition:transform .4s cubic-bezier(.16,1,.3,1);z-index:-1}
+.btn-lr:hover:before{transform:translateX(0)}
+.btn-lr:hover{color:#000000 !important; border-color:#D8C4A6 !important;}
+
+/* 3D Dynamic Card */
+.card-3d{transform-style:preserve-3d;transition:transform .45s cubic-bezier(.16,1,.3,1),border-color .35s,box-shadow .35s}
+.card-3d:hover{border-color:#D8C4A6aa;box-shadow:0 20px 50px #000000}
+
+@media(max-width:768px){
+  body{cursor:auto}
+  .cursor-dot,.cursor-ring{display:none}
+}
+</style>
+</head>
+<body class="overflow-x-hidden antialiased bg-black text-cream">
+
+<!-- Interactive Dynamic Background Canvas -->
+<canvas id="bg-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+<!-- Custom Cursor -->
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- Navigation -->
+<nav class="nav-glass fixed top-4 left-1/2 z-50 w-[92%] max-w-6xl -translate-x-1/2 rounded-2xl border border-beige/20 px-6 py-4 shadow-[0_0_30px_rgba(216,196,166,.08)]">
+  <div class="flex items-center justify-between">
+    <a href="#home" class="text-2xl font-black font-syne tracking-wider">N<span class="text-beige">A</span></a>
+    <div class="hidden items-center gap-8 text-xs font-semibold uppercase tracking-widest text-muted md:flex">
+      <a href="#home" class="transition-colors hover:text-cream">Home</a>
+      <a href="#about" class="transition-colors hover:text-cream">About</a>
+      <a href="#projects" class="transition-colors hover:text-cream">Projects</a>
+      <a href="#skills" class="transition-colors hover:text-cream">Skills</a>
+      <a href="#hobbies" class="transition-colors hover:text-cream">Hobbies</a>
+      <a href="#contact" class="transition-colors hover:text-cream">Contact</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <button onclick="downloadResume()" class="btn-lr rounded-full border border-beige/50 px-5 py-2 text-xs font-bold uppercase tracking-wider text-beige">
+        Resume ↓
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="grid-bg relative z-10 flex min-h-screen items-center px-6 pt-32 pb-16">
+  <div class="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-beige/5 blur-[120px]"></div>
+  <div class="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-12">
+    
+    <div class="reveal lg:col-span-7">
+      <div class="inline-flex items-center gap-2 rounded-full border border-beige/20 bg-beige/5 px-4 py-1.5 mb-6 text-xs uppercase tracking-[0.2em] text-beige">
+        <span class="h-2 w-2 rounded-full bg-beige animate-pulse"></span>
+        Available For Opportunities
+      </div>
+      <h1 class="font-syne text-5xl font-extrabold leading-[1.02] tracking-tight sm:text-7xl lg:text-8xl">
+        Architecting <br><span class="text-beige">Digital</span> Systems.
+      </h1>
+      <p class="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+        I'm <strong class="text-cream">Nouman Arshad</strong>. A Creative Software Developer specialized in building pixel-perfect responsive web applications, interactive interfaces, and modern digital platforms.
+      </p>
+      
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="#projects" class="btn-lr rounded-full border border-beige bg-beige px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-ink">
+          Explore Work ↗
+        </a>
+        <button onclick="downloadResume()" class="btn-lr rounded-full border border-beige/30 px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-beige">
+          Download CV ↓
+        </button>
+      </div>
+    </div>
+
+    <!-- Developer Profile Photo Display -->
+    <div class="reveal flex justify-center lg:col-span-5 lg:justify-end">
+      <div class="relative group">
+        <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-beige/30 to-beige/5 blur-xl transition duration-500 group-hover:opacity-100 opacity-60"></div>
+        <div class="card-3d relative w-72 h-80 sm:w-80 sm:h-96 rounded-3xl border border-beige/30 bg-cardbg p-3 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" 
+               alt="Nouman Arshad" 
+               class="h-full w-full object-cover rounded-2xl grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6">
+            <span class="text-xs uppercase tracking-widest text-beige font-mono">Developer & Engineer</span>
+            <h3 class="font-syne text-xl font-bold text-cream">Nouman Arshad</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Ticker / Marquee Banner -->
+<div class="relative z-10 overflow-hidden border-y border-beige/10 bg-black py-4 text-xs font-semibold uppercase tracking-[0.35em] text-muted">
+  <div class="flex w-max animate-marquee space-x-8">
+    <span>Frontend Engineering ✦ React.js ✦ Tailwind CSS ✦ JavaScript ES6+ ✦ UI/UX Engineering ✦ Full Stack Concepts ✦ Clean Architecture ✦</span>
+    <span>Frontend Engineering ✦ React.js ✦ Tailwind CSS ✦ JavaScript ES6+ ✦ UI/UX Engineering ✦ Full Stack Concepts ✦ Clean Architecture ✦</span>
+  </div>
+</div>
+
+<!-- About Section -->
+<section id="about" class="relative z-10 px-6 py-32">
+  <div class="mx-auto grid max-w-6xl gap-12 lg:grid-cols-12 items-center">
+    <div class="reveal lg:col-span-5">
+      <p class="text-xs uppercase tracking-[0.3em] text-beige font-semibold">01 / Profile</p>
+      <h2 class="font-syne mt-4 text-4xl font-bold sm:text-5xl">Building real products with <span class="text-beige">clean code.</span></h2>
+    </div>
+    <div class="reveal lg:col-span-7 text-base leading-relaxed text-muted space-y-6">
+      <p>
+        I focus on bringing complex technical ideas to life through elegant software design, efficient styling frameworks, and clean code architecture. My primary core development stack includes modern modern Web technologies such as HTML5, CSS3, Tailwind CSS, JavaScript (ES6+), and React.
+      </p>
+      <p>
+        Whether it's interactive UI components, real-time data visualizers, or high-conversion commercial platforms, my goal is always to deliver an effortless end-user experience paired with high speed performance.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="grid-bg relative z-10 px-6 py-32">
+  <div class="mx-auto max-w-6xl">
+    <div class="reveal mb-16 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+      <div>
+        <p class="text-xs uppercase tracking-[0.3em] text-beige font-semibold">02 / Selected Work</p>
+        <h2 class="font-syne mt-3 text-4xl font-bold sm:text-6xl">Featured <span class="text-beige">Projects.</span></h2>
+      </div>
+      <p class="text-sm text-muted max-w-xs">A selection of recent applications built with attention to performance and modern UI trends.</p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      
+      <!-- Project 1 -->
+      <div class="card-3d reveal rounded-3xl border border-beige/15 bg-cardbg p-5 flex flex-col justify-between">
+        <div>
+          <div class="relative h-52 w-full overflow-hidden rounded-2xl bg-zinc-900">
+            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800&auto=format&fit=crop" 
+                 alt="Real Estate Platform" class="h-full w-full object-cover grayscale transition duration-500 hover:grayscale-0 hover:scale-110">
+            <span class="absolute top-4 right-4 rounded-full border border-beige/40 bg-black/70 backdrop-blur-md px-3 py-1 text-xs text-beige font-mono">01</span>
+          </div>
+          <h3 class="font-syne mt-6 text-xl font-bold text-cream">Real Estate Engine</h3>
+          <p class="mt-2 text-sm leading-relaxed text-muted">High-performance property platform equipped with real-time property filters, interactive listings, and dynamic search options.</p>
+        </div>
+        <div class="mt-6 flex items-center justify-between">
+          <div class="flex gap-2 text-[10px] text-beige font-mono">
+            <span class="rounded-full border border-beige/20 px-2.5 py-1">HTML</span>
+            <span class="rounded-full border border-beige/20 px-2.5 py-1">Tailwind</span>
+            <span class="rounded-full border border-beige/20 px-2.5 py-1">JS</span>
+          </div>
+          <a href="#" class="btn-lr rounded-full border border-beige/40 p-2 text-beige hover:text-black">↗</a>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="card-3d reveal rounded-3xl border border-beige/15 bg-cardbg p-5 flex flex-col justify-between">
+        <div>
+          <div class="relative h-52 w-full overflow-hidden rounded-2xl bg-zinc-900">
+            <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=800&auto=format&fit=crop" 
+                 alt="Banking & Crypto App" class="h-full w-full object-cover grayscale transition duration-500 hover:grayscale-0 hover:scale-110">
+            <span class="absolute top-4 right-4 rounded-full border border-beige/40 bg-black/70 backdrop-blur-md px-3 py-1 text-xs text-beige font-mono">02</span>
+          </div>
+          <h3 class="font-syne mt-6 text-xl font-bold text-cream">Banking & Crypto Dashboard</h3>
+          <p class="mt-2 text-sm leading-relaxed text-muted">Unified financial interface merging standard banking operations with dynamic cryptocurrency portfolio management.</p>
+        </div>
+        <div class="mt-6 flex items-center justify-between">
+          <div class="flex gap-2 text-[10px] text-beige font-mono">
+            <span class="rounded-full border border-beige/20 px-2.5 py-1">React</span>
+            <span class="rounded-full border border-beige/20 px-2.5 py-1">Tailwind</span>
+            <span class="rounded-full border border-beige/20 px-2.5 py-1">REST API</span>
+          </div>
+          <a href="#" class="btn-lr rounded-full border border-beige/40 p-2 text-beige hover:text-black">↗</a>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="card-3d reveal rounded-3xl border border-beige/15 bg-cardbg p-5 flex flex-col justify-between">
+        <div>
+          <div class="relative h-52 w-full overflow-hidden rounded-2xl bg-zinc-900">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=800&auto=format&fit=crop" 
+                 alt="Premium Watch Store" class="h-full w-full object-cover grayscale transition duration-500 hover:grayscale-0 hover:scale-110">
+            <span class="absolute top-4 right-4 rounded-full border border-beige/40 bg-black/70 backdrop-blur-md px-3 py-1 text-xs text-beige font-mono">03</span>
+          </div>
+          <h3 class="font-syne mt-6 text-xl font-bold text-cream">Luxury Watch E-Commerce</h3>
+          <p class="mt-2 text-sm leading-relaxed text-muted">Full-featured luxury store featuring reactive cart modules, smooth page transitions, and item preview features.</p>
+        </div>
+        <div class="mt-6 flex items-center justify-between">
+          <div class="flex gap-2 text-[10px] text-beige font-mono">
+            <span class="rounded-full border border-beige/20 px-2.5 py-1">React</span>
+            <span class="rounded-full border border-beige/20 px-2.5 py-1">Tailwind</span>
+            <span class="rounded-full border border-beige/20 px-2.5 py-1">State API</span>
+          </div>
+          <a href="#" class="btn-lr rounded-full border border-beige/40 p-2 text-beige hover:text-black">↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Technical Skills Section -->
+<section id="skills" class="relative z-10 px-6 py-32">
+  <div class="mx-auto max-w-6xl">
+    <div class="reveal mb-16">
+      <p class="text-xs uppercase tracking-[0.3em] text-beige font-semibold">03 / Toolstack</p>
+      <h2 class="font-syne mt-3 text-4xl font-bold sm:text-6xl">Technical <span class="text-beige">Skills.</span></h2>
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+      <div class="card-3d reveal rounded-3xl border border-beige/15 bg-cardbg p-6 text-center">
+        <div class="font-syne text-4xl font-black text-beige">01</div>
+        <h3 class="mt-4 font-bold text-cream">HTML5</h3>
+        <p class="mt-2 text-xs text-muted">Semantic markup & accessible Web structures.</p>
+      </div>
+      <div class="card-3d reveal rounded-3xl border border-beige/15 bg-cardbg p-6 text-center">
+        <div class="font-syne text-4xl font-black text-beige">02</div>
+        <h3 class="mt-4 font-bold text-cream">CSS3</h3>
+        <p class="mt-2 text-xs text-muted">Responsive layouts, keyframe animations & Flex/Grid.</p>
+      </div>
+      <div class="card-3d reveal rounded-3xl border border-beige/15 bg-cardbg p-6 text-center">
+        <div class="font-syne text-4xl font-black text-beige">03</div>
+        <h3 class="mt-4 font-bold text-cream">Tailwind CSS</h3>
+        <p class="mt-2 text-xs text-muted">Utility-first custom design systems & rapid UI design.</p>
+      </div>
+      <div class="card-3d reveal rounded-3xl border border-beige/15 bg-cardbg p-6 text-center">
+        <div class="font-syne text-4xl font-black text-beige">04</div>
+        <h3 class="mt-4 font-bold text-cream">JavaScript</h3>
+        <p class="mt-2 text-xs text-muted">ES6+ syntax, asynchronous programming & DOM manipulation.</p>
+      </div>
+      <div class="card-3d reveal rounded-3xl border border-beige/15 bg-cardbg p-6 text-center">
+        <div class="font-syne text-4xl font-black text-beige">05</div>
+        <h3 class="mt-4 font-bold text-cream">React</h3>
+        <p class="mt-2 text-xs text-muted">Component state management & modular frontend app architecture.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Developer Hobbies & Passions Section -->
+<section id="hobbies" class="grid-bg relative z-10 px-6 py-32 font">
+  <div class="mx-auto max-w-6xl">
+    <div class="reveal mb-16">
+      <p class="text-xs uppercase tracking-[0.3em] text-beige font-semibold">04 / Passions & Interests</p>
+      <h2 class="font-syne mt-3 text-4xl font-bold sm:text-6xl">Beyond the <span class="text-beige">Editor.</span></h2>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      
+      <div class="card-3d reveal rounded-3xl border border-beige/15 bg-cardbg p-6">
+        <div class="text-3xl mb-4">📖</div>
+        <h3 class="font-syne text-xl font-bold text-cream">Tech Reading</h3>
+        <p class="mt-2 text-sm text-muted">Exploring modern books on software engineering, API design, system architecture, and tech startup growth.</p>
+      </div>
+
+      <div class="card-3d reveal rounded-3xl border border-beige/15 bg-cardbg p-6">
+        <div class="text-3xl mb-4">🎧</div>
+        <h3 class="font-syne text-xl font-bold text-cream">Lo-Fi & Music</h3>
+        <p class="mt-2 text-sm text-muted">Listening to lo-fi beats, synthwave, and chill electronic audio tracks to boost concentration during long code sessions.</p>
+      </div>
+
+      <div class="card-3d reveal rounded-3xl border border-beige/15 bg-cardbg p-6">
+        <div class="text-3xl mb-4">⚙️</div>
+        <h3 class="font-syne text-xl font-bold text-cream">Open Source</h3>
+        <p class="mt-2 text-sm text-muted">Testing new open-source libraries, contributing to dev repositories, and experimenting with unique frameworks.</p>
+      </div>
+
+      <div class="card-3d reveal rounded-3xl border border-beige/15 bg-cardbg p-6">
+        <div class="text-3xl mb-4">🎨</div>
+        <h3 class="font-syne text-xl font-bold text-cream">UI/UX Tinkering</h3>
+        <p class="mt-2 text-sm text-muted">Deconstructing design systems, studying typography micro-interactions, and refining user interface flows.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Contact CTA Section -->
+<section id="contact" class="relative z-10 px-6 py-32">
+  <div class="mx-auto max-w-4xl rounded-3xl border border-beige/20 bg-cardbg p-10 text-center shadow-[0_0_50px_rgba(216,196,166,.05)] md:p-16">
+    <p class="text-xs uppercase tracking-[0.3em] text-beige font-semibold">05 / Contact</p>
+    <h2 class="font-syne mt-4 text-4xl font-black sm:text-6xl">Let's build something <br><span class="text-beige">extraordinary.</span></h2>
+    <p class="mx-auto mt-6 max-w-xl text-base text-muted">
+      Available for freelance contracts, full-time engineering roles, or creative technical collaborations.
+    </p>
+    <div class="mt-10 flex flex-wrap justify-center gap-4">
+      <a href="mailto:noumanarshad.dev@example.com" class="btn-lr rounded-full border border-beige bg-beige px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-ink">
+        Get In Touch ↗
+      </a>
+      <button onclick="downloadResume()" class="btn-lr rounded-full border border-beige/30 px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-beige">
+        Get Resume PDF ↓
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Extended Footer -->
+<footer class="relative z-10 border-t border-beige/15 bg-black px-6 pt-20 pb-12">
+  <div class="mx-auto max-w-6xl">
+    <div class="grid gap-12 lg:grid-cols-12 pb-16 border-b border-beige/10">
+      
+      <!-- Brand Details -->
+      <div class="lg:col-span-5 space-y-4">
+        <div class="text-3xl font-black font-syne">N<span class="text-beige">A</span></div>
+        <p class="max-w-sm text-sm text-muted">
+          Nouman Arshad — Creative Developer specialized in engineering robust frontend interfaces, modern applications, and digital experiences.
+        </p>
+      </div>
+
+      <!-- Quick Navigation -->
+      <div class="lg:col-span-3 space-y-3 text-sm">
+        <p class="text-xs uppercase tracking-widest text-beige font-bold">Navigation</p>
+        <ul class="space-y-2 text-muted">
+          <li><a href="#home" class="hover:text-cream transition">Home</a></li>
+          <li><a href="#about" class="hover:text-cream transition">About Profile</a></li>
+          <li><a href="#projects" class="hover:text-cream transition">Selected Work</a></li>
+          <li><a href="#skills" class="hover:text-cream transition">Technical Stack</a></li>
+          <li><a href="#hobbies" class="hover:text-cream transition">Developer Hobbies</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter Form -->
+      <div class="lg:col-span-4 space-y-4">
+        <p class="text-xs uppercase tracking-widest text-beige font-bold">Newsletter</p>
+        <p class="text-xs text-muted">Subscribe to receive tech insights, portfolio updates, and development notes.</p>
+        <form onsubmit="event.preventDefault(); alert('Thank you for subscribing!');" class="flex items-center gap-2">
+          <input type="email" placeholder="Enter your email" required class="w-full rounded-full border border-beige/20 bg-cardbg px-4 py-2.5 text-xs text-cream focus:border-beige focus:outline-none">
+          <button type="submit" class="btn-lr rounded-full border border-beige bg-beige px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-ink">
+            Join
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Sub Footer -->
+    <div class="mt-8 flex flex-col gap-4 text-xs text-muted md:flex-row md:items-center md:justify-between">
+      <span>© 2026 Nouman Arshad. All rights reserved.</span>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-beige transition">GitHub</a>
+        <a href="#" class="hover:text-beige transition">LinkedIn</a>
+        <a href="#" class="hover:text-beige transition">Twitter / X</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Interactive Scripts -->
+<script>
+// Canvas Background Particle Animation
+const canvas = document.getElementById("bg-canvas");
+const ctx = canvas.getContext("2d");
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.vx = (Math.random() - 0.5) * 0.4;
+    this.vy = (Math.random() - 0.5) * 0.4;
+    this.radius = Math.random() * 1.5 + 0.5;
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = "#D8C4A6";
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < 55; i++) {
+  particles.push(new Particle());
+}
+
+function animateCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  for (let i = 0; i < particles.length; i++) {
+    particles[i].update();
+    particles[i].draw();
+    
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      
+      if (dist < 130) {
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(216, 196, 166, ${0.12 - dist / 1300})`;
+        ctx.lineWidth = 0.5;
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(animateCanvas);
+}
+animateCanvas();
+
+// Custom Cursor Motion
+const dot = document.querySelector(".cursor-dot");
+const ring = document.querySelector(".cursor-ring");
+
+window.addEventListener("mousemove", (e) => {
+  dot.style.left = e.clientX + "px";
+  dot.style.top = e.clientY + "px";
+  ring.style.left = e.clientX + "px";
+  ring.style.top = e.clientY + "px";
+});
+
+document.querySelectorAll("a, button, .card-3d").forEach((el) => {
+  el.addEventListener("mouseenter", () => ring.classList.add("active"));
+  el.addEventListener("mouseleave", () => ring.classList.remove("active"));
+});
+
+// Scroll Observer Reveals
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.12 }
+);
+
+document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+// 3D Card Physics Tilt Effect
+document.querySelectorAll(".card-3d").forEach((card) => {
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const rotateX = ((y / rect.height) - 0.5) * -10;
+    const rotateY = ((x / rect.width) - 0.5) * 10;
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+  });
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "";
+  });
+});
+
+// Resume Dynamic Generator Function
+function downloadResume() {
+  const resumeText = `
+===========================================================
+               NOUMAN ARSHAD - CURRICULUM VITAE
+===========================================================
+Role: Creative Software Developer & Frontend Engineer
+Email: noumanarshad.dev@example.com
+Portfolio: https://noumanarshad.dev
+
+-----------------------------------------------------------
+1. PROFESSIONAL SUMMARY
+-----------------------------------------------------------
+Creative Developer with expertise in constructing responsive,
+performant, and visually engaging web applications. Specialized
+in modern HTML5, CSS3, Tailwind CSS, JavaScript (ES6+), and React.
+
+-----------------------------------------------------------
+2. TECHNICAL SKILLS
+-----------------------------------------------------------
+• Languages: HTML5, CSS3, JavaScript (ES6+), TypeScript (Basic)
+• Frameworks/Tools: React.js, Tailwind CSS, Git, Webpack
+• UI Engineering: Responsive Web Design, Animations, CSS Grid/Flexbox
+• Architecture: REST APIs, Component State Management
+
+-----------------------------------------------------------
+3. PROJECT HIGHLIGHTS
+-----------------------------------------------------------
+• Real Estate Engine
+  Responsive listing platform with filter, sorting & dynamic search.
+  Stack: HTML5, Tailwind CSS, JavaScript.
+
+• Banking & Crypto Dashboard
+  Unified financial application with portfolio tracking.
+  Stack: React.js, Tailwind CSS, REST API.
+
+• Luxury Watch E-Commerce
+  Interactive e-commerce web platform with reactive cart system.
+  Stack: React.js, Tailwind CSS.
+
+-----------------------------------------------------------
+4. INTERESTS & HOBBIES
+-----------------------------------------------------------
+Tech Reading | Open Source | Lo-Fi Audio Tech | UI/UX Design Systems
+===========================================================
+  `;
+
+  const blob = new Blob([resumeText], { type: "text/plain" });
+  const anchor = document.createElement("a");
+  anchor.href = URL.createObjectURL(blob);
+  anchor.download = "Nouman_Arshad_Resume.txt";
+  document.body.appendChild(anchor);
+  anchor.click();
+  document.body.removeChild(anchor);
+}
+</script>
+
+</body>
+</html>

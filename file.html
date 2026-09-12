@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full-Stack Software Engineer | Professional Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* PROFESSIONAL SCROLLBAR (Dark Slate Track + Steel Blue Thumb) */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+
+        /* Subtle Grid & Professional Panel Styling */
+        .bg-tech-grid {
+            background-size: 32px 32px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+
+        .pro-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pro-card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Professional Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-[#090d16] text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white overflow-x-hidden bg-tech-grid">
+
+    <!-- NAVIGATION -->
+    <header class="fixed top-0 left-0 w-full z-50 px-6 py-4 border-b border-slate-800/60 bg-[#090d16]/80 backdrop-blur-md">
+        <nav class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="text-lg font-bold tracking-tight text-white flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-sm bg-blue-500"></span>
+                <span>ALEXANDER<span class="text-blue-500">.DEV</span></span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#about" class="hover:text-blue-400 transition-colors">About</a>
+                <a href="#experience" class="hover:text-blue-400 transition-colors">Experience</a>
+                <a href="#projects" class="hover:text-blue-400 transition-colors">Architecture Projects</a>
+                <a href="#competencies" class="hover:text-blue-400 transition-colors">Competencies</a>
+            </div>
+
+            <a href="#contact" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium text-sm hover:bg-blue-500 transition-colors shadow-sm">
+                Contact Me
+            </a>
+        </nav>
+    </header>
+
+    <!-- HERO & ABOUT SECTION -->
+    <section id="about" class="pt-36 pb-20 px-6 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Bio Text -->
+            <div class="lg:col-span-7 space-y-6">
+                <div class="reveal inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-blue-950/60 border border-blue-800/40 text-xs font-semibold text-blue-400">
+                    <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                    Senior Full-Stack Software Engineer
+                </div>
+
+                <h1 class="reveal text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-white">
+                    Building Enterprise Systems & Scalable Cloud Architecture
+                </h1>
+
+                <p class="reveal text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl">
+                    Full-stack engineer with over 6 years of experience designing fault-tolerant microservices, modern frontends, and distributed data pipelines. Focused on clean code, test-driven development, and measurable business outcomes.
+                </p>
+
+                <!-- Core Metrics -->
+                <div class="grid grid-cols-3 gap-4 pt-2 max-w-lg reveal-stagger">
+                    <div class="reveal pro-card p-4 rounded-xl">
+                        <h3 class="text-2xl font-bold text-blue-400">6+ Years</h3>
+                        <p class="text-xs text-slate-400 mt-1">Industry Experience</p>
+                    </div>
+                    <div class="reveal pro-card p-4 rounded-xl">
+                        <h3 class="text-2xl font-bold text-slate-200">25+</h3>
+                        <p class="text-xs text-slate-400 mt-1">Enterprise Deployments</p>
+                    </div>
+                    <div class="reveal pro-card p-4 rounded-xl">
+                        <h3 class="text-2xl font-bold text-emerald-400">99.99%</h3>
+                        <p class="text-xs text-slate-400 mt-1">SLA Reliability Target</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Profile Card -->
+            <div class="lg:col-span-5 relative reveal">
+                <div class="pro-card p-3 rounded-2xl">
+                    <div class="relative h-[420px] rounded-xl overflow-hidden bg-slate-900">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1000" alt="Developer Headshot" class="w-full h-full object-cover filter grayscale contrast-125 hover:grayscale-0 transition-all duration-500" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#090d16] via-transparent to-transparent opacity-80"></div>
+                    </div>
+
+                    <div class="p-4 bg-slate-900/90 rounded-xl mt-3 border border-slate-800">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="font-semibold text-sm text-white">Engineering Lead</h4>
+                                <p class="text-xs text-slate-400 mt-0.5">Distributed Systems & Web Applications</p>
+                            </div>
+                            <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 text-xs font-semibold border border-emerald-500/20">Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TECHNICAL COMPETENCIES -->
+    <section id="competencies" class="py-16 px-6 border-t border-slate-800/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-12 reveal">
+                <p class="text-blue-400 font-semibold text-xs tracking-wider uppercase">Core Qualifications</p>
+                <h2 class="text-3xl font-bold text-white mt-1">Technical Stack & Expertise</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 reveal-stagger">
+                <div class="reveal pro-card p-6 rounded-xl">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-lg mb-4 border border-blue-500/20">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Frontend Engineering</h3>
+                    <p class="text-slate-400 text-sm mb-4 leading-relaxed">Building accessible, responsive, and state-managed user interfaces with strict TypeScript safety.</p>
+                    <div class="flex flex-wrap gap-1.5 text-xs">
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">React.js</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">Next.js</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">TypeScript</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">Tailwind CSS</span>
+                    </div>
+                </div>
+
+                <div class="reveal pro-card p-6 rounded-xl">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-lg mb-4 border border-blue-500/20">
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Backend & Microservices</h3>
+                    <p class="text-slate-400 text-sm mb-4 leading-relaxed">Designing RESTful and gRPC APIs, event-driven messaging, and high-concurrency database architecture.</p>
+                    <div class="flex flex-wrap gap-1.5 text-xs">
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">Node.js</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">Go (Golang)</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">PostgreSQL</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">Redis</span>
+                    </div>
+                </div>
+
+                <div class="reveal pro-card p-6 rounded-xl">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-lg mb-4 border border-blue-500/20">
+                        <i class="fa-solid fa-cloud"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Cloud & Infrastructure</h3>
+                    <p class="text-slate-400 text-sm mb-4 leading-relaxed">Automating infrastructure as code, CI/CD pipelines, containerization, and monitoring tools.</p>
+                    <div class="flex flex-wrap gap-1.5 text-xs">
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">AWS</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">Docker</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">Kubernetes</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">Terraform</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="py-16 px-6 border-t border-slate-800/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-12 reveal">
+                <p class="text-blue-400 font-semibold text-xs tracking-wider uppercase">Case Studies</p>
+                <h2 class="text-3xl font-bold text-white mt-1">Featured Systems Projects</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 reveal-stagger">
+                <div class="reveal pro-card rounded-xl p-8">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-semibold text-blue-400 uppercase tracking-wider">Enterprise Fintech</span>
+                        <a href="#" class="text-slate-400 hover:text-white transition-colors"><i class="fa-solid fa-arrow-up-right-from-square text-sm"></i></a>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Automated Transaction Engine</h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Engineered a multi-threaded payment transaction processor handling over 100,000 requests per minute with failover mechanisms and low latency.</p>
+                    <div class="flex flex-wrap gap-2 text-xs">
+                        <span class="px-2 py-1 rounded bg-slate-800/80 text-slate-300">Golang</span>
+                        <span class="px-2 py-1 rounded bg-slate-800/80 text-slate-300">Kafka</span>
+                        <span class="px-2 py-1 rounded bg-slate-800/80 text-slate-300">PostgreSQL</span>
+                    </div>
+                </div>
+
+                <div class="reveal pro-card rounded-xl p-8">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-semibold text-blue-400 uppercase tracking-wider">SaaS Infrastructure</span>
+                        <a href="#" class="text-slate-400 hover:text-white transition-colors"><i class="fa-solid fa-arrow-up-right-from-square text-sm"></i></a>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Real-Time Data Visualizer</h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Built a web dashboard for enterprise telemetry analysis featuring dynamic time-series charts, role-based controls, and live WebSocket streaming.</p>
+                    <div class="flex flex-wrap gap-2 text-xs">
+                        <span class="px-2 py-1 rounded bg-slate-800/80 text-slate-300">React</span>
+                        <span class="px-2 py-1 rounded bg-slate-800/80 text-slate-300">TypeScript</span>
+                        <span class="px-2 py-1 rounded bg-slate-800/80 text-slate-300">Node.js</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROFESSIONAL PURSUITS / INTERESTS -->
+    <section id="pursuits" class="py-16 px-6 border-t border-slate-800/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-12 reveal">
+                <p class="text-blue-400 font-semibold text-xs tracking-wider uppercase">Beyond Work</p>
+                <h2 class="text-3xl font-bold text-white mt-1">Professional Pursuits & Interests</h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal-stagger">
+                <div class="reveal pro-card p-6 rounded-xl">
+                    <div class="text-2xl text-blue-400 mb-3"><i class="fa-solid fa-code-branch"></i></div>
+                    <h3 class="text-base font-bold text-white mb-1">Open Source</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">Contributing maintainer to developer tooling and utility libraries on GitHub.</p>
+                </div>
+
+                <div class="reveal pro-card p-6 rounded-xl">
+                    <div class="text-2xl text-blue-400 mb-3"><i class="fa-solid fa-chalkboard-user"></i></div>
+                    <h3 class="text-base font-bold text-white mb-1">Technical Writing</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">Authoring technical guides on microservices patterns and web performance.</p>
+                </div>
+
+                <div class="reveal pro-card p-6 rounded-xl">
+                    <div class="text-2xl text-blue-400 mb-3"><i class="fa-solid fa-microchip"></i></div>
+                    <h3 class="text-base font-bold text-white mb-1">IoT Systems</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">Experimenting with microcontrollers, home automation, and Linux home servers.</p>
+                </div>
+
+                <div class="reveal pro-card p-6 rounded-xl">
+                    <div class="text-2xl text-blue-400 mb-3"><i class="fa-solid fa-chess"></i></div>
+                    <h3 class="text-base font-bold text-white mb-1">Competitive Chess</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">Applying strategic thinking, positional analysis, and tactical problem-solving.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="border-t border-slate-800 bg-[#06090f] pt-16 pb-12 px-6 reveal">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12">
+            <div>
+                <h2 class="text-2xl font-bold text-white">Interested in working together?</h2>
+                <p class="text-slate-400 text-sm mt-1">Available for full-time roles, architectural consulting, and advisory.</p>
+            </div>
+            
+            <a href="mailto:alexander@domain.com" class="px-6 py-3 rounded-lg bg-blue-600 text-white font-medium text-sm hover:bg-blue-500 transition-colors shadow-sm">
+                alexander@domain.com
+            </a>
+        </div>
+
+        <div class="max-w-7xl mx-auto border-t border-slate-800/80 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+            <p>© 2026 Full-Stack Software Engineer. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-blue-400 transition-colors">GitHub</a>
+                <a href="#" class="hover:text-blue-400 transition-colors">LinkedIn</a>
+                <a href="#" class="hover:text-blue-400 transition-colors">Resume (PDF)</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERSECTION OBSERVER ANIMATION JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Apply staggered animation delays
+            document.querySelectorAll('.reveal-stagger').forEach((parent) => {
+                const children = parent.querySelectorAll('.reveal');
+                children.forEach((child, index) => {
+                    child.style.transitionDelay = `${index * 100}ms`;
+                });
+            });
+
+            // Intersection Observer Setup
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -40px 0px',
+                threshold: 0.1
+            };
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach((element) => {
+                revealObserver.observe(element);
+            });
+        });
+    </script>
+
+</body>
+</html>

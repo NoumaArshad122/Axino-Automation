@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NamPay</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
+<style>
+*{scroll-behavior:smooth}body{font-family:"DM Sans";overflow-x:hidden}
+h1,h2{font-family:"Playfair Display"}
+.hero{background:radial-gradient(circle at 80% 30%,#3187ff55,transparent 30%),linear-gradient(135deg,#050a17,#102653 60%,#1856a5)}
+.glass{background:#ffffff12;border:1px solid #ffffff22;backdrop-filter:blur(15px)}
+.float{animation:f 5s ease-in-out infinite}
+@keyframes f{50%{transform:translateY(-15px)}}
+.phone{transform:rotate(4deg);box-shadow:0 30px 70px #2675ff55;transition:.5s}
+.phone:hover{transform:rotate(0) translateY(-8px)}
+.card{transition:.3s}.card:hover{transform:translateY(-7px);box-shadow:0 20px 40px #2675ff20}
+.crypto{background:radial-gradient(circle at 20% 50%,#236eff30,transparent 30%),#050a17}
+.orbit{width:300px;height:300px;border:1px solid #438cff55;border-radius:50%;animation:s 15s linear infinite;position:relative}
+@keyframes s{to{transform:rotate(360deg)}}
+.coin{position:absolute;width:55px;height:55px;border-radius:50%;background:linear-gradient(135deg,#a9dcff,#2874ff);display:grid;place-items:center;font-weight:bold;color:#09245a;box-shadow:0 0 30px #3687ff66}
+.c1{top:-25px;left:120px}.c2{right:-25px;top:120px}.c3{bottom:-25px;left:120px}.c4{left:-25px;top:120px}
+</style>
+</head>
+
+<body class="bg-[#f4f8ff] text-[#101a33]">
+
+<!-- NAV -->
+<nav class="absolute z-20 w-full px-6 py-5">
+<div class="max-w-6xl mx-auto flex justify-between items-center text-white">
+<a href="#" class="font-bold text-xl flex items-center gap-2">
+<span class="w-9 h-9 grid place-items-center rounded-xl bg-blue-500">N</span>NamPay
+</a>
+<div class="hidden md:flex gap-7 text-sm text-white hover:text-blue-200 transition duration-300">
+<a href="#features">Features</a><a href="#crypto">Crypto</a><a href="#about">About</a>
+</div>
+<a href="#start" class="px-5 py-2 rounded-full bg-white text-blue-600 text-sm">Get Started</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero min-h-screen text-white px-6 pt-32">
+<div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+
+<div>
+<p class="text-blue-300 text-xs tracking-[4px] font-bold">YOUR MONEY • YOUR CONTROL</p>
+<h1 class="text-5xl md:text-7xl leading-tight mt-5">More Than Just<br><i class="text-blue-300">a Payment</i> App</h1>
+<p class="text-white/60 text-lg max-w-xl mt-6 leading-8">Send, receive, save and explore digital assets — all in one intelligent financial universe.</p>
+<div class="flex gap-3 mt-8">
+<a href="#start" class="px-6 py-3 rounded-full bg-blue-500 font-bold">Start Journey →</a>
+<a href="#crypto" class="px-6 py-3 rounded-full border border-white/20 hover : bg-blue-500 transition duration-300">Explore Crypto</a>
+</div>
+<div class="flex gap-10 mt-12 text-sm text-white/50">
+<div><b class="text-white text-xl">1M+</b><br>Users</div>
+<div><b class="text-white text-xl">50+</b><br>Countries</div>
+<div><b class="text-white text-xl">99.9%</b><br>Uptime</div>
+</div>
+</div>
+
+<!-- PHONE -->
+<div class="flex justify-center">
+<div class="phone w-72 h-[550px] rounded-[40px] border-4 border-white/20 bg-[#080e1c] p-5">
+<div class="w-24 h-5 bg-black rounded-full mx-auto mb-8"></div>
+<div class="flex justify-between mb-6"><b>NamPay</b><small class="text-green-300">● Secure</small></div>
+<div class="rounded-3xl p-5 bg-gradient-to-br from-blue-400 to-blue-700">
+<small>Total Balance</small><h2 class="text-3xl text-white mt-2">$12,458</h2>
+</div>
+<div class="grid grid-cols-4 gap-2 my-7 text-center text-xs">
+<div class="glass p-3 rounded-xl">↗<br>Send</div>
+<div class="glass p-3 rounded-xl">↓<br>Receive</div>
+<div class="glass p-3 rounded-xl">₿<br>Crypto</div>
+<div class="glass p-3 rounded-xl">•••<br>More</div>
+</div>
+<p class="font-bold mb-3">Recent Activity</p>
+<div class="glass p-3 rounded-xl flex justify-between mb-2">₿ Crypto <span class="text-green-300">+$420</span></div>
+<div class="glass p-3 rounded-xl flex justify-between">🛍 Shopping <span class="text-red-300">-$120</span></div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-24 px-6">
+<div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+<div class="h-80 rounded-[35px] bg-gradient-to-br from-blue-100 to-blue-300 grid place-items-center">
+<div class="w-32 h-32 rotate-45 rounded-[30px] bg-gradient-to-br from-blue-400 to-blue-700 grid place-items-center shadow-2xl">
+<span class="-rotate-45 text-white text-6xl font-bold">N</span>
+</div>
+</div>
+<div>
+<p class="text-blue-600 text-xs tracking-[4px] font-bold">WHY NAMPAY?</p>
+<h2 class="text-4xl md:text-5xl mt-4">A Smarter <i class="text-blue-600">Financial</i> Future</h2>
+<p class="text-gray-500 leading-7 mt-5">NamPay brings payments, saving, money management and digital assets into one simple experience.</p>
+</div>
+</div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="py-24 px-6 bg-[#edf5ff]">
+<div class="max-w-6xl mx-auto">
+<p class="text-blue-600 text-xs tracking-[4px] font-bold">NAMPAY WORLD</p>
+<h2 class="text-4xl md:text-5xl mt-3">Everything You Need.</h2>
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
+<div class="card bg-white p-6 rounded-3xl"><b class="text-3xl">◈</b><h3 class="font-bold mt-5">Smart Wallet</h3><p class="text-gray-500 text-sm mt-2">Manage your money in one place.</p></div>
+<div class="card bg-white p-6 rounded-3xl"><b class="text-3xl">⚡</b><h3 class="font-bold mt-5">Fast Payments</h3><p class="text-gray-500 text-sm mt-2">Move money with ease.</p></div>
+<div class="card bg-white p-6 rounded-3xl"><b class="text-3xl">₿</b><h3 class="font-bold mt-5">Digital Assets</h3><p class="text-gray-500 text-sm mt-2">Explore supported crypto assets.</p></div>
+<div class="card bg-white p-6 rounded-3xl"><b class="text-3xl">✦</b><h3 class="font-bold mt-5">Smart Saving</h3><p class="text-gray-500 text-sm mt-2">Build better financial habits.</p></div>
+</div>
+</div>
+</section>
+
+<!-- CRYPTO -->
+<section id="crypto" class="crypto text-white py-24 px-6">
+<div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
+
+<div class="flex justify-center">
+<div class="orbit">
+<div class="coin c1">₿</div><div class="coin c2">Ξ</div>
+<div class="coin c3">₿</div><div class="coin c4">◆</div>
+<div class="absolute inset-20 rounded-3xl bg-gradient-to-br from-blue-300 to-blue-700 grid place-items-center text-6xl font-bold shadow-2xl shadow-blue-500/40">N</div>
+</div>
+</div>
+
+<div>
+<p class="text-blue-400 text-xs tracking-[4px] font-bold">NAMPAY DIGITAL ASSETS</p>
+<h2 class="text-4xl md:text-6xl mt-4">Your Crypto.<br><i class="text-blue-400">Your Universe.</i></h2>
+<p class="text-white/50 leading-7 mt-6">Hold, send, swap and explore digital assets from the same financial space you use every day.</p>
+<div class="grid grid-cols-2 gap-4 mt-8">
+<div class="glass p-5 rounded-2xl"><b>↗ Buy Crypto</b><p class="text-xs text-white/40 mt-2">Access digital assets.</p></div>
+<div class="glass p-5 rounded-2xl"><b>⇄ Instant Swap</b><p class="text-xs text-white/40 mt-2">Move between assets.</p></div>
+<div class="glass p-5 rounded-2xl"><b>◈ Crypto Wallet</b><p class="text-xs text-white/40 mt-2">Organize your assets.</p></div>
+<div class="glass p-5 rounded-2xl"><b>✦ Earn & Grow</b><p class="text-xs text-white/40 mt-2">Explore possibilities.</p></div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- CTA -->
+<section id="start" class="py-24 px-6">
+<div class="max-w-5xl mx-auto text-center rounded-[40px] p-12 md:p-20 text-white bg-gradient-to-br from-[#071126] via-[#1450a0] to-[#3b91ff]">
+<p class="text-blue-200 text-xs tracking-[4px] font-bold">THE NEXT CHAPTER</p>
+<h2 class="text-4xl md:text-6xl mt-4">Ready for <i>NamPay?</i></h2>
+<p class="text-white/60 mt-5">Your money. Your crypto. Your world.</p>
+<a href="#" class="inline-block mt-8 px-8 py-4 rounded-full bg-white text-blue-600 font-bold">Get Started →</a>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-[#050a15] text-white px-6 py-10">
+<div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-5">
+<b class="text-xl">◈ NamPay</b>
+<p class="text-white/40 text-sm">© 2026 NamPay. All rights reserved.</p>
+</div>
+</footer>
+
+</body>
+</html>

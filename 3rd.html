@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NovaPay — Banking & Crypto</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+margin:0;
+background:#07040d;
+color:#fff;
+font-family:'Inter',sans-serif;
+letter-spacing:-.01em;
+}
+h1,h2,h3,h4,h5,h6,.logo{
+font-family:'Space Grotesk',sans-serif;
+letter-spacing:-.045em;
+}
+.glass{
+background:#ffffff08;
+border:1px solid #ffffff15;
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+}
+.grad{
+background:linear-gradient(135deg,#ff1680,#ff4fa3,#9b5cff);
+background-size:300% 300%;
+animation:grad 6s ease infinite;
+}
+.txt{
+background:linear-gradient(90deg,#fff,#ff5ca8,#b77cff);
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
+}
+.float{animation:float 5s ease-in-out infinite}
+.spin{animation:spin 15s linear infinite}
+.pulse{animation:pulse 3s ease-in-out infinite}
+@keyframes float{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-18px)}
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes grad{
+0%,100%{background-position:0 50%}
+50%{background-position:100% 50%}
+}
+@keyframes pulse{
+0%,100%{transform:scale(1);opacity:.7}
+50%{transform:scale(1.12);opacity:1}
+}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#07040d}
+::-webkit-scrollbar-thumb{background:#ff2d8d;border-radius:20px}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 w-full z-50 p-4">
+<div class="max-w-7xl mx-auto glass rounded-2xl px-5 py-3 flex justify-between items-center">
+
+<a href="#" class="flex items-center gap-3">
+<div class="grad w-10 h-10 rounded-xl grid place-items-center font-bold text-xl">N</div>
+<div>
+<b class="logo text-lg">Nova<span class="text-pink-400">Pay</span></b>
+<p class="text-[8px] text-gray-500 tracking-[.2em]">BANKING • CRYPTO</p>
+</div>
+</a>
+
+<div class="hidden md:flex gap-8 text-sm text-white">
+<a href="#features" class="hover:text-pink-400 transition">Features</a>
+<a href="#crypto" class="hover:text-pink-400 transition">Crypto</a>
+<a href="#security" class="hover:text-pink-400 transition">Security</a>
+</div>
+
+<div class="flex gap-2">
+<button class="hidden sm:block px-4 text-sm">Log in</button>
+<button class="grad px-5 py-2.5 rounded-xl font-bold text-sm hover:scale-105 transition">
+Get Started
+</button>
+</div>
+
+</div>
+</nav>
+
+
+<!-- HERO -->
+<section class="min-h-screen pt-32 pb-16 px-5 flex items-center relative overflow-hidden">
+
+<div class="absolute -top-40 -left-40 w-96 h-96 bg-pink-600/20 blur-[120px] rounded-full"></div>
+<div class="absolute right-[-150px] top-1/3 w-96 h-96 bg-purple-600/20 blur-[120px] rounded-full"></div>
+
+<div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center w-full">
+
+<!-- HERO TEXT -->
+<div>
+
+<span class="glass inline-block px-4 py-2 rounded-full text-pink-300 text-sm">
+✦ The Future of Finance
+</span>
+
+<h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[.95] mt-7">
+Your Bank & Crypto
+<span class="txt block mt-3">World in One Place</span>
+</h1>
+
+<p class="text-gray-400 text-lg mt-7 max-w-xl leading-relaxed">
+NovaPay combines modern banking and cryptocurrency
+into one secure, beautiful financial experience.
+</p>
+
+<div class="flex flex-wrap gap-4 mt-8">
+<button class="grad px-7 py-4 rounded-2xl font-bold shadow-[0_0_40px_#ff168044] hover:scale-105 transition">
+Get Started Free →
+</button>
+
+<button class="glass px-7 py-4 rounded-2xl hover:bg-white/10 transition">
+▶ Watch Demo
+</button>
+</div>
+
+<div class="flex flex-wrap gap-6 text-sm text-gray-500 mt-9">
+<span>✓ Secure</span>
+<span>✓ Low Fees</span>
+<span>✓ 24/7 Support</span>
+<span>✓ Global Access</span>
+</div>
+
+</div>
+
+
+<!-- PHONE -->
+<div class="relative flex justify-center items-center h-[600px]">
+
+<div class="absolute w-80 h-80 bg-pink-600/20 blur-[100px] rounded-full pulse"></div>
+<div class="absolute w-[430px] h-[430px] border border-pink-500/20 rounded-full spin"></div>
+
+<div class="float relative w-[290px] h-[570px] bg-black border-4 border-pink-500/70 rounded-[42px] p-3 shadow-[0_0_80px_#ff168055]">
+
+<div class="h-full rounded-[32px] bg-[#100914] p-5 overflow-hidden">
+
+<!-- Phone Header -->
+<div class="flex justify-between items-center">
+<div>
+<b class="logo">Nova<span class="text-pink-400">Pay</span></b>
+<p class="text-[9px] text-gray-500">Good morning</p>
+</div>
+<div class="w-9 h-9 rounded-full grad"></div>
+</div>
+
+<!-- Balance -->
+<p class="text-xs text-gray-500 mt-8">Total Balance</p>
+<h2 class="text-3xl font-bold mt-1">$24,682.50</h2>
+<p class="text-xs text-emerald-400 mt-2">↑ 12.5% this month</p>
+
+<!-- Chart -->
+<div class="glass rounded-2xl mt-6 p-3 h-32">
+<svg viewBox="0 0 300 100" class="w-full h-full">
+<defs>
+<linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#ff4fa3" stop-opacity=".4"/>
+<stop offset="1" stop-color="#ff4fa3" stop-opacity="0"/>
+</linearGradient>
+</defs>
+<path d="M0 80 C30 70 40 85 65 55 S100 75 130 45 S165 65 195 30 S235 50 300 8 L300 100 L0 100Z" fill="url(#area)"/>
+<path d="M0 80 C30 70 40 85 65 55 S100 75 130 45 S165 65 195 30 S235 50 300 8" fill="none" stroke="#ff4fa3" stroke-width="4"/>
+</svg>
+</div>
+
+<!-- Actions -->
+<div class="grid grid-cols-4 gap-2 mt-5 text-center text-[9px]">
+
+<div>
+<div class="bg-pink-500/15 text-pink-300 p-3 rounded-xl">↑</div>
+Send
+</div>
+
+<div>
+<div class="bg-purple-500/15 text-purple-300 p-3 rounded-xl">↓</div>
+Receive
+</div>
+
+<div>
+<div class="bg-cyan-500/15 text-cyan-300 p-3 rounded-xl">$</div>
+Deposit
+</div>
+
+<div>
+<div class="bg-amber-500/15 text-amber-300 p-3 rounded-xl">₿</div>
+Crypto
+</div>
+
+</div>
+
+<!-- Accounts -->
+<h3 class="font-bold mt-7 mb-3">Your Accounts</h3>
+
+<div class="glass p-3 rounded-xl flex justify-between text-xs">
+<span>Checking<br><small class="text-gray-600">**** 4821</small></span>
+<b>$8,420</b>
+</div>
+
+<div class="glass p-3 rounded-xl flex justify-between text-xs mt-2">
+<span>Crypto Wallet<br><small class="text-gray-600">BTC • ETH</small></span>
+<b>$3,922</b>
+</div>
+
+</div>
+</div>
+
+<!-- Floating Coins -->
+<div class="absolute top-20 left-2 sm:left-10 w-16 h-16 rounded-full bg-gradient-to-br from-orange-300 to-orange-600 grid place-items-center text-2xl font-bold shadow-lg float">
+₿
+</div>
+
+<div class="absolute bottom-20 right-2 w-14 h-14 rounded-full bg-purple-600 grid place-items-center text-xl float">
+◆
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- MARKET TICKER -->
+<div class="border-y border-white/5 bg-white/[.02] overflow-hidden py-4">
+<div class="flex justify-center gap-10 flex-wrap text-sm text-gray-400">
+<span>₿ Bitcoin <b class="text-emerald-400">$81,742 +2.4%</b></span>
+<span>◆ Ethereum <b class="text-emerald-400">$2,591 +4.8%</b></span>
+<span>◉ Solana <b class="text-emerald-400">$81.67 +6.7%</b></span>
+<span>₮ USDT <b class="text-emerald-400">$1.00</b></span>
+</div>
+</div>
+
+
+<!-- FEATURES -->
+<section id="features" class="py-24 px-5">
+
+<div class="max-w-7xl mx-auto">
+
+<p class="text-pink-400 uppercase text-xs font-bold tracking-[.25em]">
+Everything you need
+</p>
+
+<h2 class="text-4xl sm:text-5xl font-bold mt-3">
+Finance without the <span class="txt">friction.</span>
+</h2>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
+
+<div class="glass rounded-3xl p-7 hover:-translate-y-2 hover:border-pink-500/30 transition duration-300">
+<div class="text-2xl text-pink-400">$</div>
+<h3 class="text-xl font-bold mt-5">Modern Banking</h3>
+<p class="text-gray-500 mt-3 text-sm">Manage accounts, payments and transfers.</p>
+</div>
+
+<div class="glass rounded-3xl p-7 hover:-translate-y-2 hover:border-purple-500/30 transition duration-300">
+<div class="text-2xl text-purple-400">₿</div>
+<h3 class="text-xl font-bold mt-5">Crypto Trading</h3>
+<p class="text-gray-500 mt-3 text-sm">Track your digital assets in one place.</p>
+</div>
+
+<div class="glass rounded-3xl p-7 hover:-translate-y-2 hover:border-cyan-500/30 transition duration-300">
+<div class="text-2xl text-cyan-400">▣</div>
+<h3 class="text-xl font-bold mt-5">Smart Cards</h3>
+<p class="text-gray-500 mt-3 text-sm">Modern cards for everyday payments.</p>
+</div>
+
+<div class="glass rounded-3xl p-7 hover:-translate-y-2 hover:border-amber-500/30 transition duration-300">
+<div class="text-2xl text-amber-400">↗</div>
+<h3 class="text-xl font-bold mt-5">Invest & Grow</h3>
+<p class="text-gray-500 mt-3 text-sm">Build your financial future.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- CRYPTO -->
+<section id="crypto" class="py-24 px-5">
+
+<div class="max-w-7xl mx-auto glass rounded-[35px] p-8 lg:p-14 grid lg:grid-cols-2 gap-10 items-center">
+
+<div>
+<p class="text-pink-400 uppercase text-xs font-bold tracking-[.25em]">
+Crypto made simple
+</p>
+
+<h2 class="text-4xl sm:text-5xl font-bold mt-4">
+Your digital assets.
+<span class="txt">Your control.</span>
+</h2>
+
+<p class="text-gray-400 text-lg mt-5">
+Track Bitcoin, Ethereum and other digital assets
+through one powerful interface.
+</p>
+
+<button class="bg-white text-black px-6 py-3 rounded-xl font-bold mt-7 hover:scale-105 transition">
+Explore Crypto →
+</button>
+</div>
+
+<div class="grid sm:grid-cols-2 gap-4">
+
+<div class="glass p-6 rounded-3xl hover:-translate-y-2 transition">
+<div class="flex justify-between text-sm">
+<span>Bitcoin</span>
+<span class="text-emerald-400">+2.4%</span>
+</div>
+<b class="text-2xl block mt-5">$81,742</b>
+<span class="text-gray-600 text-xs">BTC</span>
+</div>
+
+<div class="glass p-6 rounded-3xl hover:-translate-y-2 transition">
+<div class="flex justify-between text-sm">
+<span>Ethereum</span>
+<span class="text-emerald-400">+4.8%</span>
+</div>
+<b class="text-2xl block mt-5">$2,591</b>
+<span class="text-gray-600 text-xs">ETH</span>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- SECURITY -->
+<section id="security" class="py-24 px-5">
+
+<div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+
+<div class="flex justify-center">
+<div class="w-40 h-40 rounded-full grad grid place-items-center text-5xl font-bold shadow-[0_0_100px_#ff168066] pulse">
+✓
+</div>
+</div>
+
+<div>
+
+<p class="text-pink-400 uppercase text-xs font-bold tracking-[.25em]">
+Security First
+</p>
+
+<h2 class="text-4xl sm:text-5xl font-bold mt-4">
+Your money. <span class="txt">Protected.</span>
+</h2>
+
+<p class="text-gray-400 text-lg mt-5">
+Built around strong authentication, transaction
+controls and security visibility.
+</p>
+
+<div class="space-y-3 mt-7">
+<div class="glass p-4 rounded-xl">● Two-factor authentication</div>
+<div class="glass p-4 rounded-xl">● Transaction confirmation</div>
+<div class="glass p-4 rounded-xl">● Device & session controls</div>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- CTA -->
+<section class="py-24 px-5">
+
+<div class="max-w-5xl mx-auto grad rounded-[40px] p-10 sm:p-16 text-center">
+
+<p class="uppercase tracking-[.25em] text-white/70 text-xs">
+The future starts here
+</p>
+
+<h2 class="text-4xl sm:text-6xl font-bold mt-4">
+One app. All your money.
+</h2>
+
+<p class="mt-5 text-white/75 text-lg">
+Banking, payments, cards and crypto in one seamless experience.
+</p>
+
+<button class="bg-white text-black px-7 py-4 rounded-2xl font-bold mt-8 hover:scale-105 transition">
+Create Your Account
+</button>
+
+</div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="border-t border-white/10 py-8 text-center text-gray-600 text-sm">
+© 2026 NovaPay — Banking & Crypto
+</footer>
+
+</body>
+</html>

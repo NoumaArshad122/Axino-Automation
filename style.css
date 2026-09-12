@@ -1,0 +1,327 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* =====================================================
+   HERO / ENTRANCE ANIMATION
+===================================================== */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(45px);
+        filter: blur(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+.fade-up,
+.animate-fadeUp {
+    animation: fadeUp 1s ease forwards;
+}
+
+/* =====================================================
+   PLANET & ORB FLOATING ANIMATION
+===================================================== */
+
+@keyframes planetFloat {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-20px);
+    }
+}
+
+.planet {
+    animation: planetFloat 8s ease-in-out infinite;
+}
+
+@keyframes orbFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-25px) scale(1.05);
+    }
+}
+
+.orb-float {
+    animation: orbFloat 9s ease-in-out infinite;
+}
+
+/* =====================================================
+   PLAY BUTTON & RADAR PULSES
+===================================================== */
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.play-pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes radarPulse {
+    0% {
+        r: 6px;
+        opacity: 0.9;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        r: 22px;
+        opacity: 0;
+    }
+}
+
+.radar-ring {
+    animation: radarPulse 2.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.25);
+        opacity: 0.6;
+    }
+}
+
+.badge-pulse {
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+/* =====================================================
+   WORKFLOW CARDS & GLOW
+===================================================== */
+
+@keyframes cardFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 0 rgba(167, 237, 0, 0);
+    }
+    50% {
+        box-shadow: 0 0 35px rgba(167, 237, 0, 0.12);
+    }
+}
+
+.workflow-card {
+    animation:
+        cardFloat 5s ease-in-out infinite,
+        glow 4s ease-in-out infinite;
+}
+
+.workflow-card:nth-child(2) {
+    animation-delay: 0.7s;
+}
+
+.workflow-card:nth-child(3) {
+    animation-delay: 1.2s;
+}
+
+.workflow-card:nth-child(4) {
+    animation-delay: 1.7s;
+}
+
+/* =====================================================
+   FLOW CONNECTOR ANIMATION
+===================================================== */
+
+@keyframes flow {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 30px 0;
+    }
+}
+
+.flow-line {
+    background-image: linear-gradient(
+        90deg,
+        #a7ed00 50%,
+        transparent 50%
+    );
+    background-size: 12px 2px;
+    animation: flow 1s linear infinite;
+}
+
+/* =====================================================
+   CRYPTO CHART ANIMATION
+===================================================== */
+
+@keyframes drawChart {
+    from {
+        stroke-dashoffset: 1000;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.animate-chart {
+    animation: drawChart 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* =====================================================
+   UNIVERSAL SCROLL-REVEAL SYSTEM (.reveal-card, .card)
+===================================================== */
+
+.reveal-card,
+.card {
+    opacity: 0;
+    transform: translateY(50px) scale(0.97);
+    transition:
+        opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+    will-change: opacity, transform;
+}
+
+.reveal-card.show,
+.card.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Directional reveal variants */
+.reveal-left {
+    transform: translateX(-40px) scale(0.98);
+}
+.reveal-left.show {
+    transform: translateX(0) scale(1);
+}
+
+.reveal-right {
+    transform: translateX(40px) scale(0.98);
+}
+.reveal-right.show {
+    transform: translateX(0) scale(1);
+}
+
+.reveal-scale {
+    transform: scale(0.92);
+}
+.reveal-scale.show {
+    transform: scale(1);
+}
+
+/* Stagger transition delays */
+.delay-100 { transition-delay: 100ms !important; }
+.delay-150 { transition-delay: 150ms !important; }
+.delay-200 { transition-delay: 200ms !important; }
+.delay-250 { transition-delay: 250ms !important; }
+.delay-300 { transition-delay: 300ms !important; }
+.delay-400 { transition-delay: 400ms !important; }
+.delay-500 { transition-delay: 500ms !important; }
+
+/* =====================================================
+   CARD HOVER & 3D INTERACTIVE EFFECTS
+===================================================== */
+
+.card-hover {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-8px) scale(1.015);
+    border-color: rgba(167, 237, 0, 0.45);
+    box-shadow: 0 20px 45px -10px rgba(167, 237, 0, 0.18);
+}
+
+.tilt-card {
+    transform-style: preserve-3d;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.card-glow {
+    box-shadow: 0 0 35px rgba(167, 237, 0, 0.08);
+}
+
+/* =====================================================
+   BUTTON SHINE / SWEEP EFFECT
+===================================================== */
+
+.btn-shine {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.btn-shine::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -75%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(
+        60deg,
+        transparent 25%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 75%
+    );
+    transform: rotate(25deg);
+    transition: left 0.8s ease;
+    pointer-events: none;
+}
+
+.btn-shine:hover::after {
+    left: 135%;
+}
+
+/* =====================================================
+   CUSTOM SCROLLBAR
+===================================================== */
+
+* {
+    scrollbar-color: #aaff00 #050a0b;
+    scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #050a0b;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #aaff00;
+    border-radius: 9999px;
+    border: 2px solid #050a0b;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #88cc00;
+}
