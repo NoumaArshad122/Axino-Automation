@@ -62,7 +62,8 @@
                 class="hidden sm:inline-block bg-[#a7ed00] text-[#172000] px-7 md:px-9 py-3.5 rounded-full text-xs font-bold hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(167,237,0,.25)] transition duration-300">
                 READ MORE
             </a>
-            <button id="mobileMenuBtn" aria-label="Toggle navigation menu"
+            <button id="mobileMenuBtn" type="button" aria-label="Toggle navigation menu" aria-controls="mobileMenu"
+                aria-expanded="false"
                 class="md:hidden w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center text-white hover:text-[#a7ed00] hover:border-[#a7ed00]/50 transition">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -92,7 +93,8 @@
      HERO SECTION
 ===================================================== -->
 
-    <section class="relative overflow-hidden min-h-[calc(100vh-72px)] flex justify-center text-center px-4 sm:px-5 pt-24 sm:pt-28 md:pt-32">
+    <section
+        class=" overflow-hidden min-h-[calc(100vh-72px)] flex justify-center text-center px-4 sm:px-5 pt-10 sm:pt-28 md:pt-10">
         <!-- PLANET -->
         <div class="planet absolute w-full max-w-[700px] h-[400px] sm:h-[600px] md:h-[700px] rounded-full left-1/2 top-24 -translate-x-1/2 opacity-[.08] bg-cover bg-center pointer-events-none"
             style="background-image: url('https://images4.alphacoders.com/654/654517.jpg');">
@@ -103,7 +105,7 @@
         </div>
 
         <!-- HERO CONTENT -->
-        <div class="relative z-10 max-w-5xl px-5">
+        <div class="relative z-10 max-w-3xl px-5    ">
             <!-- BADGE -->
             <div
                 class="fade-up inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-md text-sm font-semibold text-gray-200">
@@ -114,7 +116,8 @@
             </div>
 
             <!-- TITLE -->
-            <h1 class="fade-up mt-6 sm:mt-7 text-[2.4rem] sm:text-5xl md:text-7xl lg:text-[82px] leading-[1.15] sm:leading-[1.12] tracking-[-2px] sm:tracking-[-3px] md:tracking-[-4px] font-semibold">
+            <h1
+                class="fade-up mt-6 sm:mt-7 text-[2.4rem] sm:text-5xl md:text-7xl lg:text-[82px] leading-[1.15] sm:leading-[1.12] tracking-[-2px] sm:tracking-[-3px] md:tracking-[-4px] font-semibold">
                 Automate Work. Save
                 <br>
                 Time.
@@ -161,7 +164,8 @@
      AUTOMATION WORKFLOW SECTION
 ===================================================== -->
 
-    <section id="automation" class="relative overflow-hidden min-h-screen py-16 sm:py-24 md:py-32 px-4 sm:px-5 md:px-10">
+    <section id="automation"
+        class="relative overflow-hidden py-16 sm:py-24 md:py-28 px-4 sm:px-5 md:px-10">
         <!-- BACKGROUND GLOW -->
         <div
             class="absolute w-[90vw] max-w-[700px] h-[90vw] max-h-[700px] rounded-full bg-[#a7ed00]/5 blur-[120px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -192,7 +196,7 @@
             </div>
 
             <!-- TOP ROW -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-32">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-10">
                 <!-- TRIGGER -->
                 <div
                     class="reveal-card reveal-left card-hover tilt-card delay-100 workflow-card bg-[#050505] border border-[#a7ed00]/20 rounded-2xl p-7 md:p-8 min-h-[240px] shadow-[0_0_40px_rgba(167,237,0,.04)] hover:border-[#a7ed00]/50 transition duration-500">
@@ -254,14 +258,14 @@
             </div>
 
             <!-- CONNECTOR -->
-            <div class="hidden lg:block h-24">
+            <div class="hidden lg:block h-20">
             </div>
 
             <!-- BOTTOM ROW -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-32 lg:px-[12%]">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-10 lg:px-[5%]">
                 <!-- ACTION 01 -->
                 <div
-                    class="reveal-card reveal-left card-hover tilt-card delay-200 workflow-card bg-[#050505] border border-[#a7ed00]/20 rounded-2xl p-7 md:p-8 min-h-[230px] shadow-[0_0_40px_rgba(167,237,0,.04)] hover:border-[#a7ed00]/50 transition duration-500">
+                    class="sm:pt-10 reveal-card reveal-left card-hover tilt-card delay-200 workflow-card bg-[#050505] border border-[#a7ed00]/20 rounded-2xl p-7 md:p-8 min-h-[230px] shadow-[0_0_40px_rgba(167,237,0,.04)] hover:border-[#a7ed00]/50 transition duration-500">
                     <div class="flex items-center gap-4">
                         <div
                             class="w-11 h-11 rounded-xl bg-[#a7ed00]/10 text-[#a7ed00] flex items-center justify-center text-2xl">
@@ -284,7 +288,7 @@
 
                 <!-- ACTION 02 -->
                 <div
-                    class="reveal-card reveal-right card-hover tilt-card delay-300 workflow-card bg-[#050505] border border-[#a7ed00]/20 rounded-2xl p-7 md:p-8 min-h-[230px] shadow-[0_0_40px_rgba(167,237,0,.04)] hover:border-[#a7ed00]/50 transition duration-500">
+                    class=" reveal-card reveal-right card-hover tilt-card delay-300 workflow-card bg-[#050505] border border-[#a7ed00]/20 rounded-2xl p-7 md:p-8 min-h-[230px] shadow-[0_0_40px_rgba(167,237,0,.04)] hover:border-[#a7ed00]/50 transition duration-500">
                     <div class="flex items-center gap-4">
                         <div
                             class="w-11 h-11 rounded-xl bg-[#a7ed00]/10 text-[#a7ed00] flex items-center justify-center text-2xl">
@@ -311,7 +315,7 @@
     <section
         class="relative overflow-hidden min-h-[200px] flex justify-center mb-8 sm:mb-12 py-8 sm:py-0 bg-[linear-gradient(rgba(180,255,0,.025)_1px,transparent_1px),linear-gradient(90deg,rgba(180,255,0,.025)_1px,transparent_1px)] bg-[length:50px_50px] sm:bg-[length:70px_70px]">
         <div
-            class="reveal-card reveal-scale card-hover tilt-card delay-150 workflow-card w-[calc(100%-32px)] sm:w-[485px] max-w-[485px] rounded-[22px] border border-[#27301e] bg-black/75 p-5 sm:p-6 shadow-[0_0_45px_rgba(174,255,0,.09)]">
+            class="reveal-card reveal-scale card-hover tilt-card delay-150 workflow-card w-[calc(100%-32px)] sm:w-[485px] max-w-[485px] rounded-[22px] border border-[#27301e] bg-black/75 sm:p-6 shadow-[0_0_45px_rgba(174,255,0,.09)]">
             <div class="flex items-center gap-3 mb-5">
                 <div class="text-3xl">
                     🏁
@@ -339,7 +343,7 @@
     <!-- =========================================================
      FEATURES HEADER
 ========================================================= -->
-    <section id="features" class="fade-up border-t border-[#202829] rounded-t-[35px] bg-[#050a0b] pt-28 pb-10">
+    <section id="features" class="fade-up border-t border-[#202829] rounded-t-[35px] bg-[#050a0b] pt-20 pb-10">
         <div class="flex justify-center animate-fadeUp">
             <div
                 class="border border-[#28302e] rounded-full px-5 py-2 text-sm font-semibold flex items-center gap-2 bg-gradient-to-r from-[#96dc00]/10 to-white/[.015]">
@@ -612,7 +616,7 @@
         </div>
     </section>
     <section
-        class="bg-[#05090b] text-white py-16 px-6 font-sans flex flex-col items-center justify-center w-full overflow-hidden">
+        class="bg-[#05090b] text-white py-5  px-6 font-sans flex flex-col items-center justify-center w-full overflow-hidden">
         <!-- Top Badge: Social Proof -->
         <div class="flex items-center gap-2 mb-12 fade-up">
             <span class="text-base badge-pulse">❤️‍🔥</span>
@@ -693,7 +697,7 @@
         </div>
     </section>
 
-    <section class="min-h-screen py-20 px-4 overflow-hidden">
+    <section class="min-h-screen py-5 px-4 overflow-hidden">
         <div class="fade-up max-w-4xl mx-auto text-center mb-20 px-5">
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight leading-tight mb-5">
                 Build Smarter Workflows
@@ -984,7 +988,7 @@
 
         <!-- Contact Form -->
         <form id="growthForm" novalidate
-            class="space-y-6 bg-[#090e11] border border-white/10 p-8 sm:p-10 rounded-3xl shadow-[0_0_40px_rgba(0,0,0,0.4)] card-hover">
+            class="space-y-6 bg-[#090e11] border border-white/10 p-8 sm:p-10 rounded-3xl shadow-[0_0_40px_rgba(0,0,0,0.4)] card-hover ">
 
             <!-- Row 1: First Name & Last Name -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -1055,7 +1059,7 @@
             <!-- Submit Button -->
             <div class="pt-2">
                 <button type="submit"
-                    class="btn-shine w-full sm:w-auto px-8 py-3.5 bg-[#252d28] text-white font-bold rounded-xl hover:bg-[#a2e600] hover:text-[#252d28] transition-all transform hover:scale-[1.01] active:scale-[0.99]">
+                    class="btn-shine w-full sm:w-auto px-8 py-3.5 bg-[#a2e600] text-[#172000] font-bold rounded-xl hover:bg-[#252d28] hover:text-white transition-all transform hover:scale-[1.01] active:scale-[0.99]">
                     Submit
                 </button>
             </div>
@@ -1064,7 +1068,8 @@
     </div>
 
     <!-- MAIN BANNER CONTAINER -->
-    <div class="reveal-card relative w-full max-w-8xl mb-8 sm:mb-10 mx-auto overflow-hidden rounded-3xl bg-gradient-to-r from-transparent to-lime-500/40">
+    <div
+        class="reveal-card relative w-full max-w-8xl mb-8 sm:mb-10 mx-auto overflow-hidden rounded-3xl bg-gradient-to-r from-transparent to-lime-500/40">
 
         <!-- DEMO Badge Overlay (Top Right) -->
         <div
@@ -1333,55 +1338,7 @@
                         </span>
                         Axino
                     </a>
-                    <p class="text-sm text-gray-400 leading-relaxed max-w-sm pt-2">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's
-                    </p>
-                </div>
-
-                <!-- COLUMN 2: COMPANY -->
-                <div class="lg:col-span-2 space-y-4">
-                    <h3 class="text-lg font-semibold text-white">Company</h3>
-                    <ul class="space-y-3 text-sm">
-                        <li><a href="#" class="hover:text-[#a7ed00] transition-colors">About</a></li>
-                        <li><a href="#" class="hover:text-[#a7ed00] transition-colors">Careers</a></li>
-                        <li><a href="#" class="hover:text-[#a7ed00] transition-colors">Our Blog</a></li>
-                        <li><a href="#" class="hover:text-[#a7ed00] transition-colors">Contact Us</a></li>
-                    </ul>
-                </div>
-
-                <!-- COLUMN 3: USEFUL LINK -->
-                <div class="lg:col-span-2 space-y-4">
-                    <h3 class="text-lg font-semibold text-white">Useful Link</h3>
-                    <ul class="space-y-3 text-sm">
-                        <li><a href="#" class="hover:text-[#a7ed00] transition-colors">Resources</a></li>
-                        <li><a href="#" class="hover:text-[#a7ed00] transition-colors">Features</a></li>
-                        <li><a href="#" class="hover:text-[#a7ed00] transition-colors">Services</a></li>
-                        <li><a href="#" class="hover:text-[#a7ed00] transition-colors">Help Center</a></li>
-                        <li><a href="#" class="hover:text-[#a7ed00] transition-colors">Testimonial</a></li>
-                    </ul>
-                </div>
-
-                <!-- COLUMN 4: NEWSLETTER & SOCIALS -->
-                <div class="lg:col-span-4 space-y-5">
-                    <h3 class="text-lg font-semibold text-white">Subscribe our Newsletter</h3>
-
-                    <!-- Input Box -->
-                    <form id="newsletterForm"
-                        onsubmit="event.preventDefault(); alert('Thank you for subscribing to our newsletter!'); this.reset();"
-                        class="relative">
-                        <input type="email" required placeholder="Your Email address"
-                            class="w-full bg-[#0d1318] border border-white/10 rounded-full py-3.5 pl-6 pr-12 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#a7ed00] transition" />
-                        <button type="submit" aria-label="Subscribe"
-                            class="absolute right-4 top-1/2 -translate-y-1/2 text-[#a7ed00] hover:scale-110 transition">
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
-                            </svg>
-                        </button>
-                    </form>
-
-                    <!-- Social Icons -->
-                    <div class="flex items-center gap-3 pt-2">
+                           <div class="flex items-center gap-3 pt-2">
                         <a href="#" aria-label="Twitter"
                             class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:bg-[#a7ed00] hover:text-black transition duration-300">
                             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -1411,6 +1368,55 @@
                             </svg>
                         </a>
                     </div>
+              
+                </div>
+
+                <!-- COLUMN 2: COMPANY -->
+                <div class="lg:col-span-2 space-y-4">
+                    <h3 class="text-lg font-semibold text-white">Company</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="hover:text-[#a7ed00] transition-colors">About</a></li>
+                        <li><a href="#" class="hover:text-[#a7ed00] transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-[#a7ed00] transition-colors">Our Blog</a></li>
+                        <li><a href="#" class="hover:text-[#a7ed00] transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- COLUMN 3: USEFUL LINK -->
+                <div class="lg:col-span-2 space-y-4">
+                    <h3 class="text-lg font-semibold text-white">Useful Link</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="hover:text-[#a7ed00] transition-colors">Resources</a></li>
+                        <li><a href="#" class="hover:text-[#a7ed00] transition-colors">Features</a></li>
+                        <li><a href="#" class="hover:text-[#a7ed00] transition-colors">Services</a></li>
+                        <li><a href="#" class="hover:text-[#a7ed00] transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-[#a7ed00] transition-colors">Testimonial</a></li>
+                    </ul>
+                </div>
+
+                <!-- COLUMN 4: NEWSLETTER & SOCIALS -->
+                <div class="lg:col-span-4 space-y-5">
+                    <h3 class="text-lg font-semibold text-white">Subscribe our Newsletter</h3>
+                                 <p class="text-sm text-gray-400 leading-relaxed max-w-sm pt-2">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's
+                    </p>
+
+
+                    <!-- Input Box -->
+                    <form id="newsletterForm"
+                        onsubmit="event.preventDefault(); alert('Thank you for subscribing to our newsletter!'); this.reset();"
+                        class="relative">
+                        <input type="email" required placeholder="Your Email address"
+                            class="w-full bg-[#0d1318] border border-white/10 rounded-full py-3.5 pl-6 pr-12 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#a7ed00] transition" />
+                        <button type="submit" aria-label="Subscribe"
+                            class="absolute right-4 top-1/2 -translate-y-1/2 text-[#a7ed00] hover:scale-110 transition">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                            </svg>
+                        </button>
+                    </form>
+
                 </div>
             </div>
 

@@ -161,15 +161,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     if (mobileMenuBtn && mobileMenu) {
+        const closeMobileMenu = () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        };
+
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', String(!mobileMenu.classList.contains('hidden')));
         });
 
         const mobileLinks = mobileMenu.querySelectorAll('a');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+                closeMobileMenu();
             });
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') closeMobileMenu();
         });
     }
 });

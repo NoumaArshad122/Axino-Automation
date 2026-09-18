@@ -1,0 +1,1677 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Nouman Arshad | Software Engineer</title>
+
+  <!-- Premium Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            champagne: '#E8D7B8',
+            gold: '#C9A96E',
+            black: '#000000'
+          },
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+            display: ['Playfair Display', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    html {
+      background: #000;
+    }
+
+    body {
+      margin: 0;
+      background: #000;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* =========================
+       CUSTOM SCROLLBAR
+    ========================= */
+
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #000;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #e8d7b8;
+      border-radius: 20px;
+      border: 2px solid #000;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #c9a96e;
+    }
+
+    /* =========================
+       LOADING SCREEN
+    ========================= */
+
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1s ease, visibility 1s ease;
+    }
+
+    #loader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-content {
+      text-align: center;
+    }
+
+    .loader-logo {
+      width: 90px;
+      height: 90px;
+      border: 1px solid #e8d7b8;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      color: #e8d7b8;
+      font-size: 28px;
+      font-family: 'Playfair Display';
+      animation: loaderRotate 4s linear infinite;
+      box-shadow:
+        0 0 25px rgba(232,215,184,.15),
+        inset 0 0 25px rgba(232,215,184,.08);
+    }
+
+    @keyframes loaderRotate {
+      from {
+        transform: rotateY(0deg) rotateX(0deg);
+      }
+      to {
+        transform: rotateY(360deg) rotateX(360deg);
+      }
+    }
+
+    #percentage {
+      margin-top: 25px;
+      font-size: 13px;
+      letter-spacing: 5px;
+      color: #e8d7b8;
+    }
+
+    /* =========================
+       BACKGROUND
+    ========================= */
+
+    .background {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: .16;
+      animation: orbFloat 10s ease-in-out infinite alternate;
+    }
+
+    .orb.one {
+      width: 350px;
+      height: 350px;
+      background: #e8d7b8;
+      top: 10%;
+      left: -150px;
+    }
+
+    .orb.two {
+      width: 300px;
+      height: 300px;
+      background: #c9a96e;
+      right: -100px;
+      top: 50%;
+      animation-delay: 2s;
+    }
+
+    .orb.three {
+      width: 250px;
+      height: 250px;
+      background: #e8d7b8;
+      bottom: -100px;
+      left: 40%;
+      animation-delay: 4s;
+    }
+
+    @keyframes orbFloat {
+      from {
+        transform: translate(0, 0) scale(1);
+      }
+      to {
+        transform: translate(80px, -60px) scale(1.25);
+      }
+    }
+
+    /* =========================
+       PARTICLES
+    ========================= */
+
+    #particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #e8d7b8;
+      border-radius: 50%;
+      opacity: .5;
+      animation: particleMove linear infinite;
+    }
+
+    @keyframes particleMove {
+      from {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+
+      20% {
+        opacity: .6;
+      }
+
+      80% {
+        opacity: .5;
+      }
+
+      to {
+        transform: translateY(-20vh);
+        opacity: 0;
+      }
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 5000;
+      backdrop-filter: blur(15px);
+      background: rgba(0,0,0,.55);
+      border-bottom: 1px solid rgba(232,215,184,.08);
+    }
+
+    .nav-link {
+      position: relative;
+      color: #aaa;
+      transition: .4s;
+    }
+
+    .nav-link:hover {
+      color: #e8d7b8;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 0;
+      height: 1px;
+      background: #e8d7b8;
+      transition: .4s;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      perspective: 1200px;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      opacity: .12;
+      background-image:
+        linear-gradient(rgba(232,215,184,.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232,215,184,.15) 1px, transparent 1px);
+      background-size: 70px 70px;
+      mask-image: linear-gradient(to bottom, black, transparent);
+    }
+
+    .hero-content {
+      transform-style: preserve-3d;
+    }
+
+    .hero-title {
+      font-size: clamp(3.5rem, 9vw, 9rem);
+      line-height: .85;
+      letter-spacing: -.07em;
+      font-weight: 800;
+      text-shadow:
+        0 10px 30px rgba(232,215,184,.08);
+    }
+
+    .hero-title span {
+      color: #e8d7b8;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+    }
+
+    /* =========================
+       PROFILE 3D FRAME
+    ========================= */
+
+    .profile-wrapper {
+      perspective: 1000px;
+    }
+
+    .profile-card {
+      width: min(390px, 75vw);
+      aspect-ratio: 3/4;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform .2s ease-out;
+      border: 1px solid rgba(232,215,184,.35);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.015));
+      backdrop-filter: blur(20px);
+      box-shadow:
+        0 30px 80px rgba(0,0,0,.8),
+        0 0 50px rgba(232,215,184,.08);
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      inset: 15px;
+      border: 1px solid rgba(232,215,184,.18);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .profile-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(20%) contrast(1.05);
+      transition: transform 1s ease;
+    }
+
+    .profile-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .profile-glow {
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      background: #e8d7b8;
+      filter: blur(90px);
+      opacity: .12;
+      bottom: -50px;
+      right: -50px;
+    }
+
+    /* =========================
+       BUTTON
+    ========================= */
+
+    .luxury-btn {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #e8d7b8;
+      color: #e8d7b8;
+      transition: .5s;
+      isolation: isolate;
+    }
+
+    .luxury-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: #e8d7b8;
+      transform: translateX(-105%);
+      transition: transform .5s ease;
+      z-index: -1;
+    }
+
+    .luxury-btn:hover {
+      color: #000;
+    }
+
+    .luxury-btn:hover::before {
+      transform: translateX(0);
+    }
+
+    /* =========================
+       SECTION
+    ========================= */
+
+    section {
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-label {
+      color: #c9a96e;
+      letter-spacing: 5px;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    /* =========================
+       GLASS CARD
+    ========================= */
+
+    .glass {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.07),
+          rgba(255,255,255,.015)
+        );
+      border: 1px solid rgba(232,215,184,.12);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 25px 60px rgba(0,0,0,.35);
+    }
+
+    /* =========================
+       SKILL CARDS
+    ========================= */
+
+    .tilt-card {
+      transform-style: preserve-3d;
+      transition: transform .15s ease-out, border .3s ease;
+    }
+
+    .tilt-card:hover {
+      border-color: rgba(232,215,184,.45);
+      box-shadow:
+        0 25px 80px rgba(232,215,184,.08);
+    }
+
+    .skill-icon {
+      transform: translateZ(35px);
+    }
+
+    /* =========================
+       PROJECTS
+    ========================= */
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: .5s;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1s ease;
+      opacity: .65;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.12);
+      opacity: .35;
+    }
+
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to top,
+          rgba(0,0,0,.95),
+          rgba(0,0,0,.1)
+        );
+    }
+
+    .project-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 30px;
+      transform: translateY(20px);
+      transition: .5s;
+    }
+
+    .project-card:hover .project-info {
+      transform: translateY(0);
+    }
+
+    /* =========================
+       TIMELINE
+    ========================= */
+
+    .timeline-line {
+      position: absolute;
+      left: 15px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        #e8d7b8,
+        transparent
+      );
+    }
+
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      border: 1px solid #e8d7b8;
+      background: #000;
+      border-radius: 50%;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 0 20px rgba(232,215,184,.5);
+    }
+
+    /* =========================
+       HOBBIES
+    ========================= */
+
+    .hobby {
+      transition: .5s;
+    }
+
+    .hobby:hover {
+      transform: translateY(-10px) rotateX(5deg);
+      border-color: rgba(232,215,184,.4);
+    }
+
+    /* =========================
+       SCROLL REVEAL
+    ========================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition:
+        opacity 1s ease,
+        transform 1s cubic-bezier(.16,1,.3,1);
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================
+       CURSOR
+    ========================= */
+
+    .cursor {
+      position: fixed;
+      width: 18px;
+      height: 18px;
+      border: 1px solid #e8d7b8;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 999999;
+      transform: translate(-50%, -50%);
+      transition: width .3s, height .3s;
+      mix-blend-mode: difference;
+    }
+
+    .cursor.big {
+      width: 55px;
+      height: 55px;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 768px) {
+
+      .cursor {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 100px;
+      }
+
+      .profile-card {
+        width: min(330px, 80vw);
+      }
+
+      .hero-title {
+        font-size: clamp(3.2rem, 17vw, 6rem);
+      }
+
+      .timeline-line {
+        left: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       LOADER
+  ========================= -->
+
+  <div id="loader">
+    <div class="loader-content">
+      <div class="loader-logo">NA</div>
+      <div id="percentage">0%</div>
+    </div>
+  </div>
+
+  <!-- Cursor -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- Animated Background -->
+  <div class="background">
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
+  </div>
+
+  <!-- Particles -->
+  <div id="particles"></div>
+
+  <!-- =========================
+       NAVBAR
+  ========================= -->
+
+  <nav>
+    <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+
+      <a href="#home"
+         class="font-display text-2xl text-champagne">
+        NA.
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 text-sm">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#journey" class="nav-link">Journey</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+
+      <a href="#contact"
+         class="luxury-btn px-5 py-2 text-xs tracking-widest">
+        LET'S TALK
+      </a>
+
+    </div>
+  </nav>
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <section id="home" class="hero">
+
+    <div class="hero-grid"></div>
+
+    <div class="max-w-7xl mx-auto px-6 w-full">
+
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+        <!-- LEFT -->
+
+        <div class="hero-content reveal">
+
+          <p class="section-label mb-6">
+            Software Engineer
+          </p>
+
+          <h1 class="hero-title">
+            Nouman
+            <span>Arshad</span>
+          </h1>
+
+          <p class="text-gray-400 max-w-xl mt-8 text-lg leading-relaxed">
+            Building modern digital experiences, intelligent applications
+            and interfaces that feel alive.
+          </p>
+
+          <div class="flex flex-wrap gap-4 mt-10">
+
+            <a href="#projects"
+               class="luxury-btn px-8 py-4 text-xs tracking-[3px]">
+              VIEW PROJECTS
+            </a>
+
+            <a href="#contact"
+               class="px-8 py-4 border border-white/10 text-gray-300
+                      hover:border-champagne hover:text-champagne transition">
+              CONTACT ME
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- RIGHT -->
+
+        <div class="profile-wrapper flex justify-center lg:justify-end reveal">
+
+          <div class="profile-card" id="profileCard">
+
+            <!-- Replace this with your actual photo -->
+            <img src="WhatsApp Image 2026-09-14 at 11.50.55 AM.jpeg"
+                 alt="Nouman Arshad">
+
+            <div class="profile-glow"></div>
+
+            <div class="absolute bottom-8 left-8 z-10"
+                 style="transform:translateZ(60px)">
+
+              <p class="text-xs tracking-[4px] text-champagne">
+                DEVELOPER
+              </p>
+
+              <p class="font-display text-2xl mt-2">
+                Creating the future.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       ABOUT
+  ========================= -->
+
+  <section id="about" class="py-32">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="grid lg:grid-cols-2 gap-20 items-center">
+
+        <div class="reveal">
+
+          <p class="section-label mb-5">
+            01 / About
+          </p>
+
+          <h2 class="section-title">
+            Turning ideas into
+            <span class="font-display italic text-champagne">
+              digital reality.
+            </span>
+          </h2>
+
+        </div>
+
+        <div class="reveal">
+
+          <p class="text-gray-400 leading-8 text-lg">
+            I'm Nouman Arshad, a developer focused on building
+            modern websites, applications and software experiences.
+            I enjoy combining clean code, beautiful interfaces and
+            interactive experiences.
+          </p>
+
+          <p class="text-gray-500 leading-8 mt-6">
+            My goal is to grow into a professional software engineer
+            capable of creating complete products from idea to deployment.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- Stats -->
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-24">
+
+        <div class="glass p-8 reveal">
+          <p class="text-4xl font-bold text-champagne">07+</p>
+          <p class="text-gray-500 mt-3">Technologies</p>
+        </div>
+
+        <div class="glass p-8 reveal">
+          <p class="text-4xl font-bold text-champagne">05+</p>
+          <p class="text-gray-500 mt-3">Projects</p>
+        </div>
+
+        <div class="glass p-8 reveal">
+          <p class="text-4xl font-bold text-champagne">∞</p>
+          <p class="text-gray-500 mt-3">Ideas</p>
+        </div>
+
+        <div class="glass p-8 reveal">
+          <p class="text-4xl font-bold text-champagne">24/7</p>
+          <p class="text-gray-500 mt-3">Learning</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SKILLS
+  ========================= -->
+
+  <section id="skills" class="py-32">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="mb-16 reveal">
+
+        <p class="section-label mb-5">
+          02 / Skills
+        </p>
+
+        <h2 class="section-title">
+          My <span class="font-display italic text-champagne">arsenal.</span>
+        </h2>
+
+      </div>
+
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+
+        <!-- Skill -->
+
+        <div class="tilt-card glass p-8 min-h-[180px] reveal">
+          <div class="skill-icon">
+            <div class="text-4xl text-champagne">HTML</div>
+            <p class="text-gray-500 mt-5">Structure</p>
+          </div>
+        </div>
+
+        <div class="tilt-card glass p-8 min-h-[180px] reveal">
+          <div class="skill-icon">
+            <div class="text-4xl text-champagne">CSS</div>
+            <p class="text-gray-500 mt-5">Design</p>
+          </div>
+        </div>
+
+        <div class="tilt-card glass p-8 min-h-[180px] reveal">
+          <div class="skill-icon">
+            <div class="text-4xl text-champagne">JS</div>
+            <p class="text-gray-500 mt-5">Logic</p>
+          </div>
+        </div>
+
+        <div class="tilt-card glass p-8 min-h-[180px] reveal">
+          <div class="skill-icon">
+            <div class="text-4xl text-champagne">React</div>
+            <p class="text-gray-500 mt-5">Frontend</p>
+          </div>
+        </div>
+
+        <div class="tilt-card glass p-8 min-h-[180px] reveal">
+          <div class="skill-icon">
+            <div class="text-3xl text-champagne">Tailwind</div>
+            <p class="text-gray-500 mt-5">UI</p>
+          </div>
+        </div>
+
+        <div class="tilt-card glass p-8 min-h-[180px] reveal">
+          <div class="skill-icon">
+            <div class="text-4xl text-champagne">C#</div>
+            <p class="text-gray-500 mt-5">Software</p>
+          </div>
+        </div>
+
+        <div class="tilt-card glass p-8 min-h-[180px] reveal">
+          <div class="skill-icon">
+            <div class="text-4xl text-champagne">Git</div>
+            <p class="text-gray-500 mt-5">Version Control</p>
+          </div>
+        </div>
+
+        <div class="tilt-card glass p-8 min-h-[180px] reveal">
+          <div class="skill-icon">
+            <div class="text-3xl text-champagne">Future</div>
+            <p class="text-gray-500 mt-5">Always learning</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       PROJECTS
+  ========================= -->
+
+  <section id="projects" class="py-32">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="mb-16 reveal">
+
+        <p class="section-label mb-5">
+          03 / Selected Work
+        </p>
+
+        <h2 class="section-title">
+          Things I've
+          <span class="font-display italic text-champagne">
+            built.
+          </span>
+        </h2>
+
+      </div>
+
+
+      <div class="grid md:grid-cols-2 gap-6">
+
+
+        <!-- Project 1 -->
+
+        <div class="project-card tilt-card h-[500px] glass reveal">
+
+          <img src="images/real-estate.jpg"
+               alt="Real Estate Website">
+
+          <div class="project-overlay"></div>
+
+          <div class="project-info">
+
+            <p class="text-champagne text-xs tracking-[4px]">
+              01 / WEB DEVELOPMENT
+            </p>
+
+            <h3 class="text-3xl font-semibold mt-3">
+              Real Estate Platform
+            </h3>
+
+            <p class="text-gray-400 mt-3">
+              Modern responsive property platform with search,
+              listings and interactive UI.
+            </p>
+
+            <button class="luxury-btn px-5 py-3 mt-6 text-xs">
+              VIEW PROJECT
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- Project 2 -->
+
+        <div class="project-card tilt-card h-[500px] glass reveal">
+
+          <img src="images/banking.jpg"
+               alt="Banking App">
+
+          <div class="project-overlay"></div>
+
+          <div class="project-info">
+
+            <p class="text-champagne text-xs tracking-[4px]">
+              02 / FINTECH
+            </p>
+
+            <h3 class="text-3xl font-semibold mt-3">
+              Banking + Crypto
+            </h3>
+
+            <p class="text-gray-400 mt-3">
+              Modern financial application concept combining
+              banking and cryptocurrency exchange.
+            </p>
+
+            <button class="luxury-btn px-5 py-3 mt-6 text-xs">
+              VIEW PROJECT
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- Project 4 -->
+
+        <div class="project-card tilt-card h-[500px] glass reveal">
+
+          <img src="images/automation.jpg"
+               alt="Automation Project">
+
+          <div class="project-overlay"></div>
+
+          <div class="project-info">
+
+            <p class="text-champagne text-xs tracking-[4px]">
+              04 / AUTOMATION
+            </p>
+
+            <h3 class="text-3xl font-semibold mt-3">
+              Automation Platform
+            </h3>
+
+            <p class="text-gray-400 mt-3">
+              Futuristic automation interface with interactive
+              workflow concepts.
+            </p>
+
+            <button class="luxury-btn px-5 py-3 mt-6 text-xs">
+              VIEW PROJECT
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       JOURNEY
+  ========================= -->
+
+  <section id="journey" class="py-32">
+
+    <div class="max-w-5xl mx-auto px-6">
+
+      <div class="mb-20 reveal">
+
+        <p class="section-label mb-5">
+          04 / Journey
+        </p>
+
+        <h2 class="section-title">
+          Becoming a
+          <span class="font-display italic text-champagne">
+            software engineer.
+          </span>
+        </h2>
+
+      </div>
+
+
+      <div class="relative pl-10">
+
+        <div class="timeline-line"></div>
+
+
+        <!-- HTML -->
+
+        <div class="relative mb-20 reveal">
+
+          <div class="timeline-dot absolute -left-[37px] top-2"></div>
+
+          <p class="text-champagne text-sm">
+            01
+          </p>
+
+          <h3 class="text-3xl font-semibold mt-2">
+            HTML
+          </h3>
+
+          <p class="text-gray-500 mt-3">
+            Learning the foundations of the web.
+          </p>
+
+        </div>
+
+
+        <!-- CSS -->
+
+        <div class="relative mb-20 reveal">
+
+          <div class="timeline-dot absolute -left-[37px] top-2"></div>
+
+          <p class="text-champagne text-sm">
+            02
+          </p>
+
+          <h3 class="text-3xl font-semibold mt-2">
+            CSS + Tailwind
+          </h3>
+
+          <p class="text-gray-500 mt-3">
+            Creating responsive and beautiful interfaces.
+          </p>
+
+        </div>
+
+
+        <!-- JS -->
+
+        <div class="relative mb-20 reveal">
+
+          <div class="timeline-dot absolute -left-[37px] top-2"></div>
+
+          <p class="text-champagne text-sm">
+            03
+          </p>
+
+          <h3 class="text-3xl font-semibold mt-2">
+            JavaScript
+          </h3>
+
+          <p class="text-gray-500 mt-3">
+            Adding logic, interaction and dynamic experiences.
+          </p>
+
+        </div>
+
+
+        <!-- React -->
+
+        <div class="relative mb-20 reveal">
+
+          <div class="timeline-dot absolute -left-[37px] top-2"></div>
+
+          <p class="text-champagne text-sm">
+            04
+          </p>
+
+          <h3 class="text-3xl font-semibold mt-2">
+            React
+          </h3>
+
+          <p class="text-gray-500 mt-3">
+            Building scalable component-based interfaces.
+          </p>
+
+        </div>
+
+
+        <!-- Full Stack -->
+
+        <div class="relative reveal">
+
+          <div class="timeline-dot absolute -left-[37px] top-2"></div>
+
+          <p class="text-champagne text-sm">
+            05
+          </p>
+
+          <h3 class="text-3xl font-semibold mt-2">
+            Full Stack → Software Engineer
+          </h3>
+
+          <p class="text-gray-500 mt-3">
+            Building complete production-ready applications.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       HOBBIES
+  ========================= -->
+
+  <section class="py-32">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="mb-16 reveal">
+
+        <p class="section-label mb-5">
+          05 / Beyond Code
+        </p>
+
+        <h2 class="section-title">
+          More than
+          <span class="font-display italic text-champagne">
+            development.
+          </span>
+        </h2>
+
+      </div>
+
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+
+        <div class="hobby glass p-8 reveal">
+          <div class="text-4xl">📚</div>
+          <h3 class="mt-8 text-xl">Reading</h3>
+          <p class="text-gray-500 mt-2">Learning new ideas.</p>
+        </div>
+
+        <div class="hobby glass p-8 reveal">
+          <div class="text-4xl">🎧</div>
+          <h3 class="mt-8 text-xl">Music</h3>
+          <p class="text-gray-500 mt-2">Listening & relaxing.</p>
+        </div>
+
+        <div class="hobby glass p-8 reveal">
+          <div class="text-4xl">💻</div>
+          <h3 class="mt-8 text-xl">Coding</h3>
+          <p class="text-gray-500 mt-2">Building new things.</p>
+        </div>
+
+        <div class="hobby glass p-8 reveal">
+          <div class="text-4xl">🎨</div>
+          <h3 class="mt-8 text-xl">UI / UX</h3>
+          <p class="text-gray-500 mt-2">Exploring interfaces.</p>
+        </div>
+
+        <div class="hobby glass p-8 reveal">
+          <div class="text-4xl">🎮</div>
+          <h3 class="mt-8 text-xl">Gaming</h3>
+          <p class="text-gray-500 mt-2">Competitive gaming.</p>
+        </div>
+
+        <div class="hobby glass p-8 reveal">
+          <div class="text-4xl">🚀</div>
+          <h3 class="mt-8 text-xl">Technology</h3>
+          <p class="text-gray-500 mt-2">Exploring what's next.</p>
+        </div>
+
+        <div class="hobby glass p-8 reveal">
+          <div class="text-4xl">🧠</div>
+          <h3 class="mt-8 text-xl">Learning</h3>
+          <p class="text-gray-500 mt-2">Always improving.</p>
+        </div>
+
+        <div class="hobby glass p-8 reveal">
+          <div class="text-4xl">⚡</div>
+          <h3 class="mt-8 text-xl">Innovation</h3>
+          <p class="text-gray-500 mt-2">Turning ideas into products.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CONTACT
+  ========================= -->
+
+  <section id="contact" class="py-32">
+
+    <div class="max-w-5xl mx-auto px-6">
+
+      <div class="glass p-8 md:p-16 reveal">
+
+        <div class="text-center">
+
+          <p class="section-label">
+            06 / Contact
+          </p>
+
+          <h2 class="section-title mt-5">
+            Let's build
+            <span class="font-display italic text-champagne">
+              something.
+            </span>
+          </h2>
+
+          <p class="text-gray-500 mt-6 max-w-xl mx-auto">
+            Have an idea, project or opportunity?
+            Let's create something meaningful together.
+          </p>
+
+        </div>
+
+
+        <form id="contactForm" class="mt-14 space-y-6">
+
+          <div class="grid md:grid-cols-2 gap-5">
+
+            <input
+              type="text"
+              id="name"
+              placeholder="Your Name"
+              class="w-full bg-white/[.03] border border-white/10
+                     px-5 py-4 outline-none focus:border-champagne
+                     transition text-white">
+
+            <input
+              type="email"
+              id="email"
+              placeholder="Your Email"
+              class="w-full bg-white/[.03] border border-white/10
+                     px-5 py-4 outline-none focus:border-champagne
+                     transition text-white">
+
+          </div>
+
+          <textarea
+            id="message"
+            rows="6"
+            placeholder="Tell me about your project..."
+            class="w-full bg-white/[.03] border border-white/10
+                   px-5 py-4 outline-none focus:border-champagne
+                   transition text-white"></textarea>
+
+          <button
+            type="submit"
+            class="luxury-btn px-10 py-4 tracking-[3px] text-xs">
+            SEND MESSAGE
+          </button>
+
+          <p id="formMessage"
+             class="text-sm text-champagne hidden">
+          </p>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer class="border-t border-white/10 py-10">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="flex flex-col md:flex-row
+                  justify-between items-center gap-5">
+
+        <p class="font-display text-xl text-champagne">
+          Nouman Arshad.
+        </p>
+
+        <p class="text-gray-600 text-sm">
+          © 2026 Nouman Arshad. All rights reserved.
+        </p>
+
+        <a href="#home"
+           class="text-xs tracking-[3px] text-gray-400
+                  hover:text-champagne transition">
+          BACK TO TOP ↑
+        </a>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+    /* =========================
+       LOADER
+    ========================= */
+
+    let percentage = 0;
+
+    const loader = document.getElementById("loader");
+    const percentageText = document.getElementById("percentage");
+
+    const loading = setInterval(() => {
+
+      percentage += Math.floor(Math.random() * 7) + 1;
+
+      if (percentage >= 100) {
+
+        percentage = 100;
+
+        percentageText.textContent = percentage + "%";
+
+        clearInterval(loading);
+
+        setTimeout(() => {
+          loader.classList.add("hide");
+        }, 500);
+
+      } else {
+
+        percentageText.textContent = percentage + "%";
+
+      }
+
+    }, 60);
+
+
+    /* =========================
+       PARTICLES
+    ========================= */
+
+    const particleContainer =
+      document.getElementById("particles");
+
+    for (let i = 0; i < 80; i++) {
+
+      const particle = document.createElement("div");
+
+      particle.classList.add("particle");
+
+      particle.style.left =
+        Math.random() * 100 + "%";
+
+      particle.style.animationDuration =
+        (5 + Math.random() * 10) + "s";
+
+      particle.style.animationDelay =
+        Math.random() * 10 + "s";
+
+      particle.style.opacity =
+        Math.random();
+
+      particleContainer.appendChild(particle);
+    }
+
+
+    /* =========================
+       CUSTOM CURSOR
+    ========================= */
+
+    const cursor = document.getElementById("cursor");
+
+    document.addEventListener("mousemove", (e) => {
+
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+
+    });
+
+    document.querySelectorAll("a, button, .tilt-card")
+      .forEach(element => {
+
+        element.addEventListener("mouseenter", () => {
+          cursor.classList.add("big");
+        });
+
+        element.addEventListener("mouseleave", () => {
+          cursor.classList.remove("big");
+        });
+
+      });
+
+
+    /* =========================
+       PROFILE 3D TILT
+    ========================= */
+
+    const profileCard =
+      document.getElementById("profileCard");
+
+    profileCard.addEventListener("mousemove", (e) => {
+
+      const rect =
+        profileCard.getBoundingClientRect();
+
+      const x =
+        e.clientX - rect.left;
+
+      const y =
+        e.clientY - rect.top;
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX =
+        ((y - centerY) / centerY) * -8;
+
+      const rotateY =
+        ((x - centerX) / centerX) * 8;
+
+      profileCard.style.transform =
+        `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+    });
+
+    profileCard.addEventListener("mouseleave", () => {
+
+      profileCard.style.transform =
+        "rotateX(0deg) rotateY(0deg)";
+
+    });
+
+
+    /* =========================
+       ALL 3D CARDS
+    ========================= */
+
+    document.querySelectorAll(".tilt-card")
+      .forEach(card => {
+
+        card.addEventListener("mousemove", (e) => {
+
+          const rect =
+            card.getBoundingClientRect();
+
+          const x =
+            e.clientX - rect.left;
+
+          const y =
+            e.clientY - rect.top;
+
+          const centerX =
+            rect.width / 2;
+
+          const centerY =
+            rect.height / 2;
+
+          const rotateX =
+            ((y - centerY) / centerY) * -7;
+
+          const rotateY =
+            ((x - centerX) / centerX) * 7;
+
+          card.style.transform =
+            `perspective(900px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)
+             translateZ(10px)`;
+
+        });
+
+        card.addEventListener("mouseleave", () => {
+
+          card.style.transform =
+            "perspective(900px) rotateX(0) rotateY(0) translateZ(0)";
+
+        });
+
+      });
+
+
+    /* =========================
+       SCROLL REVEAL
+    ========================= */
+
+    const observer =
+      new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("show");
+
+          }
+
+        });
+
+      }, {
+        threshold: .12
+      });
+
+
+    document.querySelectorAll(".reveal")
+      .forEach(element => {
+
+        observer.observe(element);
+
+      });
+
+
+    /* =========================
+       CONTACT FORM
+    ========================= */
+
+    const form =
+      document.getElementById("contactForm");
+
+    const formMessage =
+      document.getElementById("formMessage");
+
+    form.addEventListener("submit", (e) => {
+
+      e.preventDefault();
+
+      const name =
+        document.getElementById("name").value.trim();
+
+      const email =
+        document.getElementById("email").value.trim();
+
+      const message =
+        document.getElementById("message").value.trim();
+
+
+      if (!name || !email || !message) {
+
+        formMessage.textContent =
+          "Please fill in all fields.";
+
+        formMessage.classList.remove("hidden");
+
+        return;
+
+      }
+
+
+      if (!email.includes("@")) {
+
+        formMessage.textContent =
+          "Please enter a valid email.";
+
+        formMessage.classList.remove("hidden");
+
+        return;
+
+      }
+
+
+      formMessage.textContent =
+        "Message ready to send.";
+
+      formMessage.classList.remove("hidden");
+
+      form.reset();
+
+    });
+
+
+    /* =========================
+       MOUSE PARALLAX HERO
+    ========================= */
+
+    document.addEventListener("mousemove", (e) => {
+
+      const x =
+        (e.clientX / window.innerWidth - .5);
+
+      const y =
+        (e.clientY / window.innerHeight - .5);
+
+      document.querySelector(".hero-grid").style.transform =
+        `translate(${x * 20}px, ${y * 20}px)`;
+
+    });
+
+  </script>
+
+</body>
+</html>
+```
