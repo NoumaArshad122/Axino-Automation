@@ -94,14 +94,14 @@
 ===================================================== -->
 
     <section
-        class=" overflow-hidden min-h-[calc(100vh-72px)] flex justify-center text-center px-4 sm:px-5 pt-10 sm:pt-28 md:pt-10">
+        class="relative overflow-hidden min-h-[calc(100vh-72px)] flex justify-center text-center px-4 sm:px-5 pt-8 sm:pt-12 md:pt-16 pb-12">
         <!-- PLANET -->
         <div class="planet absolute w-full max-w-[700px] h-[400px] sm:h-[600px] md:h-[700px] rounded-full left-1/2 top-24 -translate-x-1/2 opacity-[.08] bg-cover bg-center pointer-events-none"
             style="background-image: url('https://images4.alphacoders.com/654/654517.jpg');">
         </div>
 
         <!-- OVERLAY -->
-        <div class="inset-0 z-[1] bg-[radial-gradient(circle_at_center,transparent_15%,#05090b_75%)]">
+        <div class="absolute inset-0 z-[1] bg-[radial-gradient(circle_at_center,transparent_15%,#05090b_75%)] pointer-events-none">
         </div>
 
         <!-- HERO CONTENT -->
@@ -262,10 +262,10 @@
             </div>
 
             <!-- BOTTOM ROW -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-10 lg:px-[5%]">
+            <div class="mt-8 sm:mt-12 lg:mt-0 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-10 lg:px-[5%]">
                 <!-- ACTION 01 -->
                 <div
-                    class="sm:pt-10 reveal-card reveal-left card-hover tilt-card delay-200 workflow-card bg-[#050505] border border-[#a7ed00]/20 rounded-2xl p-7 md:p-8 min-h-[230px] shadow-[0_0_40px_rgba(167,237,0,.04)] hover:border-[#a7ed00]/50 transition duration-500">
+                    class="reveal-card reveal-left card-hover tilt-card delay-200 workflow-card bg-[#050505] border border-[#a7ed00]/20 rounded-2xl p-7 md:p-8 min-h-[230px] shadow-[0_0_40px_rgba(167,237,0,.04)] hover:border-[#a7ed00]/50 transition duration-500">
                     <div class="flex items-center gap-4">
                         <div
                             class="w-11 h-11 rounded-xl bg-[#a7ed00]/10 text-[#a7ed00] flex items-center justify-center text-2xl">
@@ -313,9 +313,9 @@
     </section>
 
     <section
-        class="relative overflow-hidden min-h-[200px] flex justify-center mb-8 sm:mb-12 py-8 sm:py-0 bg-[linear-gradient(rgba(180,255,0,.025)_1px,transparent_1px),linear-gradient(90deg,rgba(180,255,0,.025)_1px,transparent_1px)] bg-[length:50px_50px] sm:bg-[length:70px_70px]">
+        class="relative overflow-hidden min-h-[200px] flex justify-center mb-8 sm:mb-12 py-8 sm:py-12 bg-[linear-gradient(rgba(180,255,0,.025)_1px,transparent_1px),linear-gradient(90deg,rgba(180,255,0,.025)_1px,transparent_1px)] bg-[length:50px_50px] sm:bg-[length:70px_70px]">
         <div
-            class="reveal-card reveal-scale card-hover tilt-card delay-150 workflow-card w-[calc(100%-32px)] sm:w-[485px] max-w-[485px] rounded-[22px] border border-[#27301e] bg-black/75 sm:p-6 shadow-[0_0_45px_rgba(174,255,0,.09)]">
+            class="reveal-card reveal-scale card-hover tilt-card delay-150 workflow-card w-[calc(100%-32px)] sm:w-[485px] max-w-[485px] rounded-[22px] border border-[#27301e] bg-black/75 p-5 sm:p-6 shadow-[0_0_45px_rgba(174,255,0,.09)]">
             <div class="flex items-center gap-3 mb-5">
                 <div class="text-3xl">
                     🏁
